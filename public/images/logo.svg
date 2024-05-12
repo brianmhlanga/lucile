@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 442.86 538.57">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #fffffd;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #003e95;
+      }
+
+      .cls-6 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-7 {
+        fill: #cb1400;
+      }
+
+      .cls-7, .cls-8 {
+        stroke: #cb1400;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+
+      .cls-5 {
+        font-family: FONTSPRINGDEMO-SingolareBlackRegular, 'FONTSPRING DEMO - Singolare Black';
+        font-size: 98.42px;
+      }
+
+      .cls-9 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-10 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-8 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <rect class="cls-3" x="-35.71" y="-18.57" width="498.57" height="584.29"/>
+  <g>
+    <path class="cls-8" d="m175.93,179.03l-71.03-49.09c-1.94-2.87-3.82-6.08-5.49-9.65-8.82-18.8-7.36-37.28-5.48-47.91,9.16-5.67,26.15-14.09,47.22-12.48,3.94.3,7.61.92,10.97,1.73l71.03,49.09c6.43,4.44,7.46,14.11,2.29,21.58l-28.52,41.26c-5.16,7.47-14.56,9.93-21,5.48Z"/>
+    <path class="cls-4" d="m184.45,213.4l-81.74-56.5c-2.23-3.3-4.39-6.99-6.32-11.11-10.16-21.63-8.47-42.9-6.3-55.13,10.54-6.52,30.1-16.22,54.34-14.37,4.53.35,8.75,1.06,12.63,1.99l81.74,56.5c7.4,5.12,8.58,16.23,2.64,24.83l-32.82,47.48c-5.94,8.6-16.76,11.42-24.16,6.31Z"/>
+    <circle class="cls-2" cx="116.05" cy="106.53" r="5.91"/>
+  </g>
+  <circle class="cls-7" cx="340.56" cy="443.81" r="11.63"/>
+  <text class="cls-5" transform="translate(82.14 335.86)"><tspan x="0" y="0">PRICE</tspan><tspan class="cls-6" x="0" y="118.11">L</tspan><tspan class="cls-1" x="45.96" y="118.11">Y</tspan><tspan class="cls-9" x="107.48" y="118.11">S</tspan><tspan class="cls-10" x="167.42" y="118.11">T</tspan></text>
+</svg>

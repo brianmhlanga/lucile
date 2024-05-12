@@ -1,0 +1,253 @@
+{
+    "Categories": [
+        {
+            "Name": "Rice",
+            "Products": [
+                {
+                    "Brand": "Brand X Rice",
+                    "Stores": [
+                        { "Shop": "OK Mart", "Price": 2.30 },
+                        { "Shop": "Shop Y", "Price": 2.50 },
+                        { "Shop": "Shop B", "Price": 2.80 }
+                    ]
+                },
+                {
+                    "Brand": "Brand A Rice",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 2.10 },
+                        { "Shop": "Shop Y", "Price": 2.30 },
+                        { "Shop": "Shop Z", "Price": 2.50 }
+                    ]
+                },
+                {
+                    "Brand": "Brand AAS Rice",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 2.10 },
+                        { "Shop": "Shop Y", "Price": 2.30 },
+                        { "Shop": "Shop L", "Price": 2.50 }
+                    ]
+                },
+                {
+                    "Brand": "Brand AGT Rice",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 2.10 },
+                        { "Shop": "Shop B", "Price": 2.30 },
+                        { "Shop": "Shop Z", "Price": 2.50 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Pasta",
+            "Products": [
+                {
+                    "Brand": "Brand Y Pasta",
+                    "Stores": [
+                        { "Shop": "Shop A", "Price": 1.50 },
+                        { "Shop": "Shop Y", "Price": 1.80 },
+                        { "Shop": "Shop C", "Price": 2.10 }
+                    ]
+                },
+                {
+                    "Brand": "Brand B Pasta",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 1.60 },
+                        { "Shop": "Shop Y", "Price": 1.90 },
+                        { "Shop": "Shop Z", "Price": 2.20 }
+                    ]
+                },
+                {
+                    "Brand": "Brand BAC Pasta",
+                    "Stores": [
+                        { "Shop": "Shop D", "Price": 1.60 },
+                        { "Shop": "Shop Y", "Price": 1.90 },
+                        { "Shop": "Shop Z", "Price": 2.20 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Flour",
+            "Products": [
+                {
+                    "Brand": "Brand Z Flour",
+                    "Stores": [
+                        { "Shop": "Shop A", "Price": 1.80 },
+                        { "Shop": "Shop B", "Price": 2.00 },
+                        { "Shop": "Shop D", "Price": 2.20 }
+                    ]
+                },
+                {
+                    "Brand": "Brand C Flour",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 1.70 },
+                        { "Shop": "Shop Y", "Price": 1.95 },
+                        { "Shop": "Shop Z", "Price": 2.20 }
+                    ]
+                },
+                {
+                    "Brand": "Brand G Flour",
+                    "Stores": [
+                        { "Shop": "Shop A", "Price": 1.80 },
+                        { "Shop": "Shop B", "Price": 2.00 },
+                        { "Shop": "Shop D", "Price": 2.20 }
+                    ]
+                },
+                {
+                    "Brand": "Brand F Flour",
+                    "Stores": [
+                        { "Shop": "Shop X", "Price": 1.70 },
+                        { "Shop": "Shop Y", "Price": 1.95 },
+                        { "Shop": "Shop Z", "Price": 2.20 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Furniture",
+            "Products": [
+                {
+                    "Brand": "Brand A Furniture",
+                    "Stores": [
+                        { "Shop": "Furniture Mart", "Price": 200 },
+                        { "Shop": "Home Decor", "Price": 220 },
+                        { "Shop": "Furniture World", "Price": 250 }
+                    ]
+                },
+                {
+                    "Brand": "Brand B Furniture",
+                    "Stores": [
+                        { "Shop": "Furniture Plus", "Price": 180 },
+                        { "Shop": "Furniture City", "Price": 210 },
+                        { "Shop": "Home Furnishings", "Price": 230 }
+                    ]
+                },
+                {
+                    "Brand": "Brand C Furniture",
+                    "Stores": [
+                        { "Shop": "Furniture Palace", "Price": 190 },
+                        { "Shop": "Home Essentials", "Price": 200 },
+                        { "Shop": "Furniture Haven", "Price": 220 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Spices",
+            "Products": [
+                {
+                    "Brand": "Brand X Spices",
+                    "Stores": [
+                        { "Shop": "Spice World", "Price": 5 },
+                        { "Shop": "Spice Emporium", "Price": 6 },
+                        { "Shop": "Spice Mart", "Price": 7 }
+                    ]
+                },
+                {
+                    "Brand": "Brand Y Spices",
+                    "Stores": [
+                        { "Shop": "Spice King", "Price": 4 },
+                        { "Shop": "Spice Market", "Price": 5 },
+                        { "Shop": "Spice Haven", "Price": 6 }
+                    ]
+                },
+                {
+                    "Brand": "Brand Z Spices",
+                    "Stores": [
+                        { "Shop": "Spice City", "Price": 6 },
+                        { "Shop": "Spice Land", "Price": 7 },
+                        { "Shop": "Spice Corner", "Price": 8 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Clothing",
+            "Products": [
+                {
+                    "Brand": "Brand A Shirt",
+                    "Stores": [
+                        { "Shop": "Fashion Emporium", "Price": 25.00 },
+                        { "Shop": "Style Haven", "Price": 22.50 },
+                        { "Shop": "Cloth Corner", "Price": 27.80 }
+                    ]
+                },
+                {
+                    "Brand": "Brand B Pants",
+                    "Stores": [
+                        { "Shop": "Cloth Corner", "Price": 30.00 },
+                        { "Shop": "Fashion Emporium", "Price": 28.50 },
+                        { "Shop": "Style Haven", "Price": 32.20 }
+                    ]
+                },
+                {
+                    "Brand": "Brand C Dress",
+                    "Stores": [
+                        { "Shop": "Style Haven", "Price": 40.00 },
+                        { "Shop": "Cloth Corner", "Price": 38.50 },
+                        { "Shop": "Fashion Emporium", "Price": 42.20 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Medical",
+            "Products": [
+                {
+                    "Brand": "Brand A Painkiller",
+                    "Stores": [
+                        { "Shop": "Health Plus", "Price": 8.50 },
+                        { "Shop": "PharmaCare", "Price": 7.20 },
+                        { "Shop": "MediMart", "Price": 9.80 }
+                    ]
+                },
+                {
+                    "Brand": "Brand B Bandage",
+                    "Stores": [
+                        { "Shop": "MediMart", "Price": 5.00 },
+                        { "Shop": "Health Plus", "Price": 4.50 },
+                        { "Shop": "PharmaCare", "Price": 5.80 }
+                    ]
+                },
+                {
+                    "Brand": "Brand C Antibiotic",
+                    "Stores": [
+                        { "Shop": "PharmaCare", "Price": 12.00 },
+                        { "Shop": "MediMart", "Price": 11.50 },
+                        { "Shop": "Health Plus", "Price": 13.20 }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Electronics",
+            "Products": [
+                {
+                    "Brand": "Brand A Smartphone",
+                    "Stores": [
+                        { "Shop": "Tech City", "Price": 400.00 },
+                        { "Shop": "Gadget Spot", "Price": 380.00 },
+                        { "Shop": "ElecMart", "Price": 420.00 }
+                    ]
+                },
+                {
+                    "Brand": "Brand B Laptop",
+                    "Stores": [
+                        { "Shop": "ElecMart", "Price": 800.00 },
+                        { "Shop": "Tech City", "Price": 780.00 },
+                        { "Shop": "Gadget Spot", "Price": 820.00 }
+                    ]
+                },
+                {
+                    "Brand": "Brand C Headphones",
+                    "Stores": [
+                        { "Shop": "Gadget Spot", "Price": 50.00 },
+                        { "Shop": "ElecMart", "Price": 48.00 },
+                        { "Shop": "Tech City", "Price": 52.00 }
+                    ]
+                }
+            ]
+        }
+        
+    ]
+}

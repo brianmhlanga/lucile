@@ -1,0 +1,272 @@
+[
+    {
+        "Category": "Rice",
+        "Product": {
+            " X Rice": [
+                { "Shop": "OK Mart", "Price": 2.30 },
+                { "Shop": "Shop Y", "Price": 2.50 },
+                { "Shop": "Shop B", "Price": 2.80 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " Y Pasta": [
+                { "Shop": "Shop A", "Price": 1.50 },
+                { "Shop": "Shop Y", "Price": 1.80 },
+                { "Shop": "Shop C", "Price": 2.10 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " Z Flour": [
+                { "Shop": "Shop A", "Price": 1.80 },
+                { "Shop": "Shop B", "Price": 2.00 },
+                { "Shop": "Shop D", "Price": 2.20 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " A Rice": [
+                { "Shop": "Shop X", "Price": 2.10 },
+                { "Shop": "Shop Y", "Price": 2.30 },
+                { "Shop": "Shop Z", "Price": 2.50 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " B Pasta": [
+                { "Shop": "Shop X", "Price": 1.60 },
+                { "Shop": "Shop Y", "Price": 1.90 },
+                { "Shop": "Shop Z", "Price": 2.20 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " C Flour": [
+                { "Shop": "Shop X", "Price": 1.70 },
+                { "Shop": "Shop Y", "Price": 1.95 },
+                { "Shop": "Shop Z", "Price": 2.20 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " D Rice": [
+                { "Shop": "Shop X", "Price": 2.20 },
+                { "Shop": "Shop Y", "Price": 2.40 },
+                { "Shop": "Shop Z", "Price": 2.60 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " E Pasta": [
+                { "Shop": "Shop X", "Price": 1.70 },
+                { "Shop": "Shop Y", "Price": 2.00 },
+                { "Shop": "Shop Z", "Price": 2.30 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " F Flour": [
+                { "Shop": "Shop X", "Price": 1.90 },
+                { "Shop": "Shop Y", "Price": 2.10 },
+                { "Shop": "Shop Z", "Price": 2.30 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " G Rice": [
+                { "Shop": "Shop X", "Price": 2.40 },
+                { "Shop": "Shop Y", "Price": 2.60 },
+                { "Shop": "Shop Z", "Price": 2.80 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " H Pasta": [
+                { "Shop": "Shop X", "Price": 1.80 },
+                { "Shop": "Shop Y", "Price": 2.10 },
+                { "Shop": "Shop Z", "Price": 2.40 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " I Flour": [
+                { "Shop": "Shop X", "Price": 2.00 },
+                { "Shop": "Shop Y", "Price": 2.30 },
+                { "Shop": "Shop Z", "Price": 2.60 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " J Rice": [
+                { "Shop": "Shop X", "Price": 2.50 },
+                { "Shop": "Shop Y", "Price": 2.80 },
+                { "Shop": "Shop Z", "Price": 3.00 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " K Pasta": [
+                { "Shop": "Shop X", "Price": 1.90 },
+                { "Shop": "Shop Y", "Price": 2.20 },
+                { "Shop": "Shop Z", "Price": 2.50 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " L Flour": [
+                { "Shop": "Shop X", "Price": 2.10 },
+                { "Shop": "Shop Y", "Price": 2.40 },
+                { "Shop": "Shop Z", "Price": 2.70 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " M Rice": [
+                { "Shop": "Shop X", "Price": 2.60 },
+                { "Shop": "Shop Y", "Price": 2.90 },
+                { "Shop": "Shop Z", "Price": 3.20 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " N Pasta": [
+                { "Shop": "Shop X", "Price": 2.00 },
+                { "Shop": "Shop Y", "Price": 2.30 },
+                { "Shop": "Shop Z", "Price": 2.60 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " O Flour": [
+                { "Shop": "Shop X", "Price": 2.30 },
+                { "Shop": "Shop Y", "Price": 2.60 },
+                { "Shop": "Shop Z", "Price": 2.90 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " P Rice": [
+                { "Shop": "Shop X", "Price": 2.70 },
+                { "Shop": "Shop Y", "Price": 3.00 },
+                { "Shop": "Shop Z", "Price": 3.30 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " Q Pasta": [
+                { "Shop": "Shop X", "Price": 2.10 },
+                { "Shop": "Shop Y", "Price": 2.40 },
+                { "Shop": "Shop Z", "Price": 2.70 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " R Flour": [
+                { "Shop": "Shop X", "Price": 2.50 },
+                { "Shop": "Shop Y", "Price": 2.80 },
+                { "Shop": "Shop Z", "Price": 3.10 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " S Rice": [
+                { "Shop": "Shop X", "Price": 3.00 },
+                { "Shop": "Shop Y", "Price": 3.30 },
+                { "Shop": "Shop Z", "Price": 3.60 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " T Pasta": [
+                { "Shop": "Shop X", "Price": 2.30 },
+                { "Shop": "Shop Y", "Price": 2.60 },
+                { "Shop": "Shop Z", "Price": 2.90 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " U Flour": [
+                { "Shop": "Shop X", "Price": 2.70 },
+                { "Shop": "Shop Y", "Price": 3.00 },
+                { "Shop": "Shop Z", "Price": 3.30 }
+            ]
+        }
+    },
+    {
+        "Category": "Rice",
+        "Product": {
+            " V Rice": [
+                { "Shop": "Shop X", "Price": 3.30 },
+                { "Shop": "Shop Y", "Price": 3.60 },
+                { "Shop": "Shop Z", "Price": 3.90 }
+            ]
+        }
+    },
+    {
+        "Category": "Pasta",
+        "Product": {
+            " W Pasta": [
+                { "Shop": "Shop X", "Price": 2.60 },
+                { "Shop": "Shop Y", "Price": 2.90 },
+                { "Shop": "Shop Z", "Price": 3.20 }
+            ]
+        }
+    },
+    {
+        "Category": "Flour",
+        "Product": {
+            " X Flour": [
+                { "Shop": "Shop X", "Price": 3.10 },
+                { "Shop": "Shop Y", "Price": 3.40 },
+                { "Shop": "Shop Z", "Price": 3.70 }
+            ]
+        }
+    }
+]
