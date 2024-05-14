@@ -1,44 +1,119 @@
 <template>
-<div class="hero heroheight">
-  <Swiper
-    :modules="[SwiperAutoplay, SwiperEffectCreative,SwiperNavigation,SwiperPagination]"
-    :slides-per-view="1"
-    :loop="true"
-    :effect="'creative'"
-    :navigation="true"
-    :autoplay="{
-      delay: 4000,
-      disableOnInteraction: true,
-    }"
-    :creative-effect="{
-      prev: {
-        shadow: false,
-        translate: ['-20%', 0, -1],
-      },
-      next: {
-        translate: ['100%', 0, 0],
-      },
-    }"
-  >
-  <SwiperSlide v-for="(image, index) in images" :key="index">
-      <img :src="image?.image" />
-    </SwiperSlide>
-  </Swiper>
-<!-- <Carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000">
-            <template #item="slotProps">
-                <div class="border-1 surface-border border-round m-2  p-3">
-                    <div class="mb-3">
-                        <div class="relative mx-auto">
-                            <img :src="slotProps.data.image"  class="w-full border-round" />
-                        </div>
-                    </div>
-                </div>
-            </template>
-</Carousel> -->
+  <div class="block-content">
+  <div class="">
+    <div class="relative p-8 overflow-hidden">
+      <img src="/images/banner.png" alt="Image" class="absolute top-0 left-0 w-auto h-full block md:w-full">
+      <div class=" my-6 relative">
+        <TabView class="tabview-custom">
+    <TabPanel class="panells">
+        <template #header>
+            <div class="flex align-items-center gap-2">
+                <span class="font-bold white-space-nowrap">For Sale</span>
+            </div>
+        </template>
+        <div class="surface-card p-4 shadow-2 border-round p-fluid">
+  <div class="grid formgrid p-fluid">
+    <div class="field mb-4 col-12 md:col-3">
+      <label for="company_name" class="font-medium text-900">Location</label>
+      <InputText class="p-inputtext p-component" placeholder="Search Location" />
+    </div>
+    <div class="field mb-4 col-12 md:col-3">
+      <label for="invoice_id" class="font-medium text-900">Property Types</label>
+      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="invoice_id" type="text">
+    </div>
+    <div class="field mb-4 col-12 md:col-2">
+      <label for="customer_name" class="font-medium text-900">Refrence Code</label>
+      <InputText class="p-inputtext p-component" placeholder="Ref Code" />
+    </div>
+    <div  class="topbuttons field mb-4 col-12 md:col-4">
+      <ToggleButton v-model="checked" onLabel="Advanced Options" offLabel="Advanced Options" onIcon="pi pi-lock" 
+            offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="Advanced Options" />
+      <button class="p-button p-component w-auto" type="button" aria-label="Create Invoice" data-pc-name="button" data-pc-section="root" data-pd-ripple="true">
+        <span class="p-button-icon p-button-icon-left pi pi-search" data-pc-section="icon"></span>
+        <span class="p-button-label" data-pc-section="label">Search</span>
+        <!---->
+        <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
+      </button>
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Min Price</label>
+      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Max Price</label>
+      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Beds</label>
+      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Baths</label>
+      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+    </div>
+  </div>
+  
 </div>
-
+    </TabPanel>
+    <TabPanel>
+        <template #header>
+            <div class="flex align-items-center gap-2">
+                <span class="font-bold white-space-nowrap">For Rent</span>
+            </div>
+        </template>
+        <div class="surface-card p-4 shadow-2 border-round p-fluid">
+        <div class="grid formgrid p-fluid">
+          <div class="field mb-4 col-12 md:col-3">
+            <label for="company_name" class="font-medium text-900">Location</label>
+            <InputText class="p-inputtext p-component" placeholder="Search Location" />
+          </div>
+          <div class="field mb-4 col-12 md:col-3">
+            <label for="invoice_id" class="font-medium text-900">Property Types</label>
+            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="invoice_id" type="text">
+          </div>
+          <div class="field mb-4 col-12 md:col-2">
+            <label for="customer_name" class="font-medium text-900">Refrence Code</label>
+            <InputText class="p-inputtext p-component" placeholder="Ref Code" />
+          </div>
+          <div  class="topbuttons field mb-4 col-12 md:col-4">
+            <ToggleButton v-model="checked" onLabel="Advanced Options" offLabel="Advanced Options" onIcon="pi pi-lock" 
+                  offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="Advanced Options" />
+            <button class="p-button p-component w-auto" type="button" aria-label="Create Invoice" data-pc-name="button" data-pc-section="root" data-pd-ripple="true">
+              <span class="p-button-icon p-button-icon-left pi pi-search" data-pc-section="icon"></span>
+              <span class="p-button-label" data-pc-section="label">Search</span>
+              <!---->
+              <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
+            </button>
+          </div>
+          <div v-if="checked" class="field mb-4 col-12 md:col-3">
+            <label for="customer_email" class="font-medium text-900">Min Price</label>
+            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+          </div>
+          <div v-if="checked" class="field mb-4 col-12 md:col-3">
+            <label for="customer_email" class="font-medium text-900">Max Price</label>
+            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+          </div>
+          <div v-if="checked" class="field mb-4 col-12 md:col-3">
+            <label for="customer_email" class="font-medium text-900">Beds</label>
+            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+          </div>
+          <div v-if="checked" class="field mb-4 col-12 md:col-3">
+            <label for="customer_email" class="font-medium text-900">Baths</label>
+            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+          </div>
+        </div>
+        
+      </div>
+    </TabPanel>
+</TabView>
+      </div>
+    </div>
+  </div>
+  <!---->
+</div>
 </template>
 <script lang="ts" setup>
+const checked = ref(false);
 const images = ref(
   [
     {
@@ -79,6 +154,37 @@ const responsiveOptions = ref([
 ]);
 </script>
 <style>
+.topbuttons {
+    margin-top: 19px !important;
+}
+.lockbtn {
+    margin-right: 10px !important;
+    width: 212px !important;
+}
+.p-tabview .p-tabview-panels {
+    background: #00000000 !important;
+}
+.p-tabview .p-tabview-nav {
+    background: #ffffff00 !important;
+    border: none !important;
+    border-width: 0px !important;
+    padding-left: 21px !important;
+}
+a#pv_id_23_1_header_action {
+    background-color: #ecc36b;
+    color: white !important;
+    font-weight: 100 !important;
+    margin-left: 5px !important;
+}
+a#pv_id_23_0_header_action {
+    background-color: #27303d !important;
+    color: white !important;
+}
+li.p-tabview-ink-bar {
+    color: red !important;
+    height: 5px !important;
+    background-color: white !important;
+}
 .heroheight {
     padding: 0;
     border-top: 0 none;
@@ -98,6 +204,9 @@ const responsiveOptions = ref([
 .hero {
   /* height: 600px; */
   overflow: hidden;
+}
+.topbuttons {
+    padding-top: 8px !important;
 }
 
 .hero .swiper-container {
@@ -271,5 +380,13 @@ span.tagline {
     
 }
 
+.p-tabview .p-tabview-panels {
+    /* background: #ffffff; */
+    padding: 0.875rem 1.125rem 1.125rem 1.125rem;
+    border: 0 none;
+    color: #334155;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
 }
 </style>

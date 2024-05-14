@@ -1,75 +1,21 @@
 <template>
-    <div class="bg-custom p-3 col-12 flex justify-content-between row mainnav" style="height: 100px;">
-                <div class="col-2">
-                    <NuxtImg @click="navigateTo('/')" src="/images/logo.svg" alt="Image" height="40" class="toplogo" />
-                </div>
-                <div class='search col-6'>
-                    <IconField iconPosition="left">
-                        <InputIcon>
-                            <i class="pi pi-search" />
-                        </InputIcon>
-
-                        <input @keydown="isKeyDown = true" @keyup="searchProducts()"  v-model="search_text" class="searchinput p-inputtext p-component surface-section text-600 surface-border w-full" data-pc-name="inputtext" data-pc-section="root" type="text" placeholder="Search Product | Category | Brand">
-                    </IconField>
-                    <!-- v-if="search_text !== ''" -->
-                      <div v-if="search_text !== ''" class="card p-3" role="dialog" aria-labelledby="pv_id_1_header" aria-modal="true" data-pc-name="dialog" data-pc-section="root" pv_id_3="" style="display: flex;flex-direction: column;pointer-events: auto;width: 60rem;border-radius: 10px;background-color: #f2f2f2;margin-top: 10px;" data-pd-focustrap="true" >
-                        <DataTable v-if="isKeyDown" :value="products" :row="10">
-                        <Column field="code">
-                            <template #body>
-                                <Skeleton></Skeleton>
-                            </template>
-                        </Column>
-                        <Column field="name" >
-                            <template #body>
-                                <Skeleton></Skeleton>
-                            </template>
-                        </Column>
-                        <Column field="category">
-                            <template #body>
-                                <Skeleton></Skeleton>
-                            </template>
-                        </Column>
-                        <Column field="quantity">
-                            <template #body>
-                                <Skeleton></Skeleton>
-                            </template>
-                        </Column>
-                        </DataTable>
-                        <DataTable v-else :value="products"  resizableColumns columnResizeMode="expand" showGridlines rowGroupMode="subheader" groupRowsBy="Category" sortMode="single"
-        sortField="Category" :sortOrder="1" scrollable scrollHeight="400px">
-                        <Column field="Category" header="Category"></Column>
-                        <Column field="Product" header="Product">
-                            <template #body="slotProps">
-                                <div class="flex align-items-center gap-2">
-                                    <img :alt="slotProps.data.Product" src="https://primefaces.org/cdn/primevue/images/avatar/ivanmagalhaes.png" width="32" style="vertical-align: middle" />
-                                    <span>{{ slotProps.data.Product }}</span>
-                                </div>
-                            </template>
-                        </Column>
-                        <Column v-for="shop in stores" :field="shop" :header="shop">
-                            <template #body="slotProps">
-                                <span>{{ slotProps?.data?.[shop] }}</span>
-                                <span class="cart" v-if="slotProps?.data?.[shop] !== '-'">BUY</span>
-                            </template>
-                        </Column>
-                        <template #groupheader="slotProps">
-                            <div class="flex align-items-center gap-2">
-                                <Button icon="pi pi-folder-open" severity="secondary" text rounded outlined aria-label="Bookmark" />
-                                <span class="catheaders">{{ slotProps.data.Category }}</span>
-                            </div>
-                        </template>
-                        <template #groupfooter="slotProps">
-                            <div class="flex justify-content-end font-bold w-full">Product Total: {{ calculateCategoryTotal(slotProps.data.Category) }}</div>
-                        </template>
-                        </DataTable>
-                      <!---->
-                      <span class="p-hidden-accessible p-hidden-focusable" tabindex="0" role="presentation" aria-hidden="true" data-p-hidden-accessible="true" data-p-hidden-focusable="true" data-pc-section="lastfocusableelement"></span>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <Button  icon="pi pi-file"  class="first mr-2" @click="toggle" label="Catalogues" />
-                    <Button icon="pi pi-tags" @click="navigateTo('/compare')" class="second" label="Price Compare" />
-                </div>
+    <div class="bg-custom relative px-6">
+    <div class="py-3 lg:py-2 flex align-items-center justify-content-between lg:static border-bottom-none lg:border-bottom-1 border-gray-800" style="min-height: 81px;">
+        <NuxtImg src="/images/logo.svg" alt="Image"  class="logo mr-0 lg:mr-6"/>
+        <div class="flex align-items-center">
+        <a class="cursor-pointer block lg:hidden text-gray-400 mr-5 p-ripple" data-pd-ripple="true" data-pd-styleclass="true">
+            <i class="pi pi-ellipsis-v text-2xl"></i>
+            <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
+        </a>
+        <a class="cursor-pointer block lg:hidden text-gray-400 p-ripple" data-pd-ripple="true" data-pd-styleclass="true">
+            <i class="pi pi-bars text-4xl"></i>
+            <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
+        </a>
+        </div>
+    </div>
+    </div>
+    <div class="btmenu relative">
+        <Menubar class="hidden lg:block absolute lg:static lg:w-auto w-full bg-gray-900 left-0 top-100 z-1 shadow-2 lg:shadow-none" :model="items" />
     </div>
     <OverlayPanel ref="op">
     <div class="flex flex-column gap-3 w-25rem">
@@ -121,17 +67,32 @@ const items = ref([
         root: true
     },
     {
-        label: 'Features',
+        label: 'For Sale',
         link: '/#features',
         root: true
     },
     {
-        label: 'Pricing',
+        label: 'For Rent',
         link: '/#pricing',
         root: true
     },
     {
+        label: 'About Us',
+        link: '#',
+        root: true
+    },
+    {
+        label: 'Showdays',
+        link: '#',
+        root: true
+    },
+    {
         label: 'Contact Us',
+        link: '#',
+        root: true
+    },
+    {
+        label: 'Login',
         link: '#',
         root: true
     }
@@ -226,8 +187,32 @@ onMounted (async() => {
 })
 </script>
 <style>
+.logo {
+    height: 80px !important;
+    width: auto;
+}
+.p-menubar {
+    padding: 0.5rem 0.5rem;
+    background: #ecc36b !important;
+    color: #ffffff !important;
+    /* border: 1px solid #e2e8f0; */
+    /* border-radius: 6px; */
+}
 .bg-custom {
-    background-color: #003e95 !important;
+    background-color: #27303d !important;
+}
+.btmenu {
+    background-color: #ecc36b !important;
+}
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 300 !important;
+}
+.p-menubar .p-menubar-root-list > .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover {
+    color: #ffffff;
+    background: #27303d;
+    margin-right: 1px;
 }
 img.toplogo {
     /* margin-top: 37px; */
