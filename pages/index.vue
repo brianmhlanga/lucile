@@ -3,8 +3,10 @@
     <NuxtLayout name="default">
       <Navbar />
       <hero />
-      <!-- <Section_one />
-      <last /> -->
+      <Listings />
+      <Locations />
+      <Services />
+      <last />
     </NuxtLayout>
   </template>
   
