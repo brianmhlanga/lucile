@@ -1,7 +1,8 @@
 
 <template>
-    <div class="card">
-        <Carousel :value="products" :numVisible="6" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000">
+    <div class="top">
+        <div class="feed card col-10">
+        <Carousel :value="products" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000">
             <template #item="slotProps">
                 <div class="border-1 surface-border border-round m-2  p-3">
                     <div class="mb-3">
@@ -37,6 +38,8 @@
             </DataTable>
         </OverlayPanel>
     </div>
+    </div>
+   
 </template>
 
 <script lang="ts" setup>
@@ -87,6 +90,9 @@ const  addEllipsis = (str:string) => {
     background: #003e95;
     color: #ffffff;
     text-transform: uppercase;
+}
+.feed.card.col-10 {
+    margin: auto !important;
 }
 button.p-button.p-component.p-button-icon-only.ml-2.cart {
     background-color: #003e95;
