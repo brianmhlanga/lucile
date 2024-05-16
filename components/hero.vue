@@ -170,20 +170,27 @@ const responsiveOptions = ref([
     border-width: 0px !important;
     padding-left: 21px !important;
 }
-a#pv_id_23_1_header_action {
+.p-tabview-nav-link p-tabview-header-action {
     background-color: #ecc36b;
     color: white !important;
     font-weight: 100 !important;
     margin-left: 5px !important;
 }
-a#pv_id_23_0_header_action {
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    background-color: #000000;
+    color: white !important;
+    font-weight: 100 !important;
+    margin-left: 5px !important;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, outline-color 0.2s;
+}
+.p-tabview-nav-link p-tabview-header-action {
     background-color: #27303d !important;
     color: white !important;
 }
 li.p-tabview-ink-bar {
     color: red !important;
     height: 5px !important;
-    background-color: white !important;
+    background-color:#ecc36b !important
 }
 .heroheight {
     padding: 0;
