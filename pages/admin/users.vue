@@ -108,7 +108,6 @@
     </div>
   </form>
 </div>
-    
     <div class="flex justify-content-end gap-2">
         <Button type="button" label="Cancel" severity="secondary" @click="addUserDialog = false"></Button>
         <Button type="button" label="Save" @click="addUser()"></Button>
