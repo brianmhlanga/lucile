@@ -294,7 +294,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ first_name }} {{ surname }}</span>
                             <!-- <img class="img-profile rounded-circle"
                                 src="img/undraw_profile.svg"> -->
                         </a>
@@ -377,6 +377,25 @@
     </main>
 </template>
 
+<script lang="ts" setup>
+  const id = ref()
+  const username = ref()
+  const first_name = ref()
+  const surname = ref()
+  const email = ref()
+  const role = ref()
+
+  onMounted(() => {
+    let userData:any = useCookie('user').value
+    console.log("userdd",userData)
+    first_name.value = userData?.first_name
+    surname.value = userData?.surname
+    role.value = userData?.role
+    id.value = userData?.id
+
+
+  })
+</script>
 <script lang="ts">
   export default defineNuxtComponent({
     head() {
