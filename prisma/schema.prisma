@@ -18,7 +18,7 @@ model User {
   username String?
   first_name String
   surname String
-  email String
+  email String @unique
   phone_number String
   whatsapp_number String
   role Role   @default(USER)
