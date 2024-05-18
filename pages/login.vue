@@ -20,7 +20,7 @@
                                     <InputText v-model="email" placeholder="Enter your email address" class="w-12" />
                                 </div>
                                 <div class="form-group">
-                                    <Password v-model="password" placeholder="Enter Password"  :feedback="false" class="w-12" />
+                                    <InputText v-model="password" placeholder="Enter Password" type="password" class="w-12" />
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
@@ -29,7 +29,7 @@
                                             Me</label>
                                     </div>
                                 </div>
-                                <Button class="w-12 signin" label="Sign In" />
+                                <Button :loading="isLoading" @click="login()" class="w-12 signin" label="Sign In" />
                             </form>
                             <hr>
                             <div class="text-center">
@@ -49,8 +49,29 @@
 </NuxtLayout>
 </template>
 <script lang="ts" setup>
+import { useAuthStore } from '~/stores/auth';
+const authStore = useAuthStore()
 const email = ref()
+const isLoading = ref(false)
 const password = ref()
+definePageMeta({
+        middleware: ["not-auth"]
+});
+const login = async () => {
+    isLoading.value = true;
+    let data = {
+        email: email.value,
+        password: password.value
+    }
+    let result = await authStore.login(data).then((data:any) => {
+        if(data?.data?.success)  {
+            isLoading.value = false
+            if(process.client){
+                navigateTo("/admin/dashboard");
+            }
+        }
+    })
+}
 </script>
 <style>
 .bg-login {
