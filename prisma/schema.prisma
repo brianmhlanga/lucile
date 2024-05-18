@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id     String @id @default(cuid())
+  username String?
+  first_name String
+  surname String
+  email String
+  phone_number String
+  whatsapp_number String
+  role Role   @default(USER)
+  status Boolean @default(true)
+  properties Property[]
+  password String
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+
+enum Role {
+  AGENT
+  ADMIN
+  SUPER_ADMIN
+  REALTOR
+  USER
+}
+
+model Images {
+  id String @id @default(cuid())
+  image_name String
+  property_id String
+  property Property @relation(fields: [property_id],references: [id])
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+model Location {
+  id String @id @default(cuid())
+  name String
+  properties Property[]
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+
+model Property {
+  id String @id @default(cuid())
+  name String
+  description String?
+  address String?
+  owner_name String?
+  refrence_code String?
+  owner_email String?
+  owner_phone String?
+  showDate DateTime?
+  on_show Boolean @default(false)
+  amount Float
+  status propStatus 
+  location_id String
+  features Features[]
+  images Images[]
+  other_features Json?
+  type_id String
+  agent_id String
+  location Location @relation(fields: [location_id],references: [id])
+  agent User @relation(fields: [agent_id],references: [id])
+  prop_type PropertyType @relation(fields: [type_id],references: [id])
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+
+model Features {
+  id String @id @default(cuid())
+  name String?
+  total Int?
+  property_id String
+  property Property @relation(fields: [property_id],references: [id])
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+
+model PropertyType {
+  id String @id @default(cuid())
+  name String?
+  property Property[]
+  status Boolean @default(true)
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
+
+enum propStatus {
+  LISTED
+  ARCHIVED
+  SOLD
+}
