@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `property` MODIFY `status` ENUM('LISTED', 'ARCHIVED', 'SOLD') NOT NULL DEFAULT 'LISTED';
