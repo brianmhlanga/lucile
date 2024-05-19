@@ -40,14 +40,13 @@ enum Role {
 model Images {
   id String @id @default(cuid())
   image_name String
-  property_id String
-  property Property @relation(fields: [property_id],references: [id])
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
 }
 model Location {
   id String @id @default(cuid())
-  name String
+  location_name String
+  status Boolean @default(true)
   properties Property[]
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
@@ -65,10 +64,10 @@ model Property {
   showDate DateTime?
   on_show Boolean @default(false)
   amount Float
-  status propStatus 
+  status propStatus  @default(LISTED)
   location_id String
   features Features[]
-  images Images[]
+  images Json?
   other_features Json?
   type_id String
   agent_id String
