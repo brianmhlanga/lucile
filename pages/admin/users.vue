@@ -123,6 +123,9 @@ import { useToast } from "primevue/usetoast";
 import { useAdminStore } from '~/stores/admin';
 const authStore = useAuthStore()
 const adminStore = useAdminStore()
+definePageMeta({
+    middleware:['auth']
+})
 const toast = useToast()
 const customers = ref();
 const addUserDialog = ref(false)
