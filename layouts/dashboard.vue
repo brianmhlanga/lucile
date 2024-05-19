@@ -43,85 +43,28 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="pi pi-users"></i>
-                <span>User Management</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/admin/users">Add Users</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                </div>
-            </div>
-        </li>
+        <PanelMenu :model="items" class="w-full md:w-14rem">
+            <template #item="{ item }">
+                <a v-ripple class="flex align-items-center pmentr px-3 py-2 cursor-pointer">
+                    <span :class="[item.icon, 'text-primary']" />
+                    <span :class="['ml-2', { 'font-semibold': item.items }]">{{ item.label }}</span>
+                    <Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
+                    <span v-if="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{ item.shortcut }}</span>
+                </a>
+            </template>
+        </PanelMenu>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
-                </div>
-            </div>
-        </li>
+       
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-        </li>
+       
+     
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
+      
         <!-- Sidebar Toggler (Sidebar) -->
         <!-- <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -384,10 +327,57 @@
   const surname = ref()
   const email = ref()
   const role = ref()
-
+  const items = ref([
+    {
+        label: 'Property',
+        icon: 'pi pi-building',
+        items: [
+            {
+                label: 'Properties',
+                icon: 'pi pi-home',
+                command: () => {
+                    navigateTo('/admin/properties')
+                }
+            },
+            {
+                label: 'Showdays',
+                icon: 'pi pi-calendar',
+                command: () => {
+                    navigateTo('/admin/showdays')
+                }
+            },
+            {
+                label: 'Property Types',
+                icon: 'pi pi-building-columns',
+                command: () => {
+                    navigateTo('/admin/types')
+                }
+            },
+            {
+                label: 'Locations',
+                icon: 'pi pi-compass',
+                command: () => {
+                    navigateTo('/admin/locations')
+                }
+            }
+        ]
+    },
+    {
+        label: 'User Management',
+        icon: 'pi pi-users',
+        items: [
+            {
+                label: 'Users',
+                icon: 'pi pi-user',
+                command: () => {
+                    navigateTo('/admin/users')
+                }
+            }
+        ]
+    }
+]);
   onMounted(() => {
     let userData:any = useCookie('user').value
-    console.log("userdd",userData)
     first_name.value = userData?.first_name
     surname.value = userData?.surname
     role.value = userData?.role
@@ -438,6 +428,48 @@
     height: 5px;
     width: 10px;
   }
+  @media screen and (min-width: 768px) {
+    .md\:w-14rem {
+        width: 220px !important;
+    }
+}
+.p-panelmenu .p-panelmenu-header .p-panelmenu-header-content {
+    border: 0 none;
+    color: #64748b;
+    background: #000000;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, outline-color 0.2s;
+    outline-color: transparent;
+}
+.pmentr {
+    background-color: #ecc36b;
+    color: white;
+}
+.pmentr:hover {
+    color: white;
+    text-decoration: none;
+}
+.text-primary {
+    color: #4a577d !important;
+}
+.p-panelmenu .p-panelmenu-content {
+    padding: 0.25rem 0.25rem;
+    border: 0 none;
+    background: #ecc36b;
+    color: #334155;
+    border-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+  .p-panelmenu .p-panelmenu-panel {
+    padding: 0.25rem 0.25rem;
+    overflow: hidden;
+    margin-bottom: 1px;
+    border: 1px solid #ecc36b !important;
+    border-radius: 6px;
+}
 
   body::-webkit-scrollbar-thumb {
     background-color: rgba(32,33,36,0.38);
