@@ -16,13 +16,17 @@ export default defineEventHandler(async (event) => {
         //     token: z.string()
         // });
         // Destruct body
-        const { property_name,agent,description,address,owner_email,owner_name,owner_phone,reference_code,location,type,amount,ammenities,other_ammenities,uploaded_images,is_available_on_show,showdate, token } = data
+        const { property_name,listing_types,agent,description,address,owner_email,owner_name,owner_phone,suburb,location,type,amount,ammenities,other_ammenities,uploaded_images,is_available_on_show,showdate, token } = data
 
         // const validateBody = bodySchema.safeParse(data);
         //Get env variables
         const JWT_APP_TOKEN_SECRET:any = process.env.NUXT_PUBLIC_JWT_APP_TOKEN_SECRET;
         const validateToken = await checkAppJwtToken(token, JWT_APP_TOKEN_SECRET);
-
+        const referenceGenerator = async () => {
+            let num = await prisma.property.count()+1
+            let refnum = `LRE${num}`
+            return refnum
+        }
         // if(!validateBody.success) return { data: {}, message: 'Input is in the wrong format', success: false }
 
         if(!validateToken.success) return { data: {}, message: 'Session is invalid', success: false }
@@ -37,8 +41,10 @@ export default defineEventHandler(async (event) => {
                 owner_email,
                 owner_name,
                 owner_phone,
-                refrence_code: reference_code,
+                refrence_code: await referenceGenerator(),
+                listing_status: listing_types,
                 location_id: location,
+                suburb_id: suburb,
                 type_id: type,
                 agent_id: agent,
                 amount: Number(amount),
@@ -50,6 +56,8 @@ export default defineEventHandler(async (event) => {
         });
         const addIdToObjectArray = (arr: any[], propertyId: string) => {
             return arr.map((obj: any) => {
+                console.log('ammenities',ammenities)
+                console.log("total",obj.total)
                 const totalNumber = parseFloat(obj.total);
                 return { ...obj, property_id: propertyId, total: totalNumber };
             });
