@@ -19,8 +19,8 @@ export default defineEventHandler(async (event) => {
 
     sharp(filepath)
         .resize({
-            width: 500,
-            height: 500,
+            width: 1024,
+            height: 768,
             fit: "contain",
             background: { r: 255, g: 255, b: 255, alpha: 0.0 }
         })
