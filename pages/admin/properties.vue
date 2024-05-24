@@ -28,6 +28,92 @@
                     {{ data.name }}
                 </template>
             </Column>
+            <Column field="name" header="Property Image" style="min-width: 12rem">
+                <template #body="slotProps">
+                <img :src="getLink(slotProps.data.images[0].image_url)" class="w-6rem border-round" />
+            </template>
+            </Column>
+            <Column field="property_type" header="Property Type" style="min-width: 12rem">
+                <template #body="slotprops">
+                    {{ slotprops.data?.prop_type?.name }}
+                </template>
+            </Column>
+            <Column field="property_type" header="Property Type" style="min-width: 12rem">
+                <template #body="slotprops">
+                    {{ slotprops.data?.listing_status }}
+                </template>
+            </Column>
+            <Column field="property_type" header="Main Features" style="min-width: 12rem">
+                <template #body="slotprops">
+                    <table>
+            <tr class="kt">
+                <td class="ky">Bedrooms</td>
+                <td class="kyy">{{ slotprops.data?.features[0]?.total ?  slotprops.data?.features[0]?.total  :0 }}</td>
+            </tr>
+            <tr class="kt">
+                <td class="ky">Bathrooms</td>
+                <td class="kyy">{{ slotprops.data?.features[1]?.total ?  slotprops.data?.features[1]?.total  :0 }}</td>
+            </tr>
+            <tr class="kt">
+                <td class="ky">Area</td>
+                <td class="kyy">{{ slotprops.data?.features[2]?.total ? slotprops.data?.features[2]?.total :0 }}</td>
+            </tr>
+            <tr class="kt">
+                <td class="ky">Lounges</td>
+                <td class="kyy">{{ slotprops.data?.features[3]?.total ?  slotprops.data?.features[3]?.total  :0 }}</td>
+            </tr>
+            <tr class="kt">
+                <td class="ky">Garages</td>
+                <td class="kyy">{{ slotprops.data?.features[4]?.total ?  slotprops.data?.features[4]?.total  :0 }}</td>
+            </tr>
+        </table>
+                </template>
+            </Column>
+            <Column field="address" header="Address" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.address }}
+                </template>
+            </Column>
+            <Column field="name" header="Reference Code" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.refrence_code }}
+                </template>
+            </Column>
+            <Column field="owner_name" header="Owner Name" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.owner_name }}
+                </template>
+            </Column>
+            <Column field="owner_email" header="Owner Email" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.owner_email }}
+                </template>
+            </Column>
+            <Column field="owner_phone" header="Owner Phone" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.owner_phone }}
+                </template>
+            </Column>
+            <Column field="status" header="Status" style="min-width: 12rem">
+                <template #body="{ data }">
+                    {{ data.status }}
+                </template>
+            </Column>
+            <Column header="Agent Name" style="min-width: 12rem">
+                <template #body="slotprops">
+                    {{ slotprops.data?.agent.first_name }} {{ slotprops?.data?.agent.surname }}
+                </template>
+            </Column>
+            <Column field="location" header="Location" style="min-width: 12rem">
+                <template #body="slotprops">
+                    {{ slotprops.data?.location?.location_name }}
+                </template>
+            </Column>
+            <Column field="location" header="Date Listed" style="min-width: 12rem">
+                <template #body="slotprops">
+                    {{ formatDate(slotprops.data?.created_at)  }}
+                </template>
+            </Column>
         </DataTable>
         </div>
     </div>
@@ -54,27 +140,31 @@
       <label for="customer_name" class="font-medium text-900">Owner Name</label>
       <InputText v-model="owner_name" />
     </div>
-    <div class="field mb-4 col-6 md:col-6">
+    <div class="field mb-4 col-4 md:col-4">
       <label for="customer_email" class="font-medium text-900">Owner Email</label>
       <InputText v-model="owner_email" />
     </div>
-    <div class="field mb-4 col-6 md:col-6">
+    <div class="field mb-4 col-4 md:col-4">
       <label for="customer_email" class="font-medium text-900">Owner Phone</label>
       <InputText v-model="owner_phone" />
     </div>
-    <div class="field mb-4 col-6 md:col-6">
-      <label for="customer_email" class="font-medium text-900">Reference Code</label>
-      <InputText v-model="reference_code"/>
-    </div>
-    <div class="field mb-4 col-6 md:col-6">
+    <div class="field mb-4 col-4 md:col-4">
       <label for="customer_email" class="font-medium text-900">Location</label>
       <Dropdown v-model="selected_location" :options="locations" optionLabel="location_name" optionValue="id" />
     </div>
-    <div class="field mb-4 col-6 md:col-6">
+    <div class="field mb-4 col-4 md:col-4">
+      <label for="customer_email" class="font-medium text-900">Suburb</label>
+      <Dropdown v-model="selected_suburb" :options="suburbs" optionLabel="suburb_name" optionValue="id" />
+    </div>
+    <div class="field mb-4 col-4 md:col-4">
       <label for="customer_email" class="font-medium text-900">Property Types</label>
       <Dropdown v-model="selected_type" :options="property_types" optionLabel="name" optionValue="id" />
     </div>
-    <div class="field mb-4 col-6 md:col-6">
+    <div class="field mb-4 col-4 md:col-4">
+      <label for="customer_email" class="font-medium text-900">Listing Type</label>
+      <Dropdown v-model="selected_listing_type" :options="listing_types" />
+    </div>
+    <div class="field mb-4 col-4 md:col-4">
       <label for="customer_email" class="font-medium text-900">Amount</label>
       <InputText v-model="amount" type="number"/>
     </div>
@@ -167,6 +257,8 @@ const owner_name = ref()
 const owner_phone = ref()
 const reference_code = ref()
 const selected_location = ref()
+const selected_listing_type = ref("FOR SALE")
+const listing_types = ref(['FOR SALE',"FOR RENT"])
 const selected_type = ref()
 const bedrooms = ref()
 const showdate = ref()
@@ -175,6 +267,7 @@ const lounges = ref()
 const bathrooms = ref()
 const area = ref()
 const customers = ref();
+const suburbs = ref()
 const responsiveOptions = ref([
     {
         breakpoint: '1400px',
@@ -205,6 +298,7 @@ const properties = ref()
 const property_types = ref()
 const locations = ref();
 const uploaded_images = ref<any>([])
+const selected_suburb = ref()
     const complete = ref(false)
 const name = ref()
 const amount = ref()
@@ -213,7 +307,6 @@ const token = useCookie('token')
 const setCompleteTrueAfterTwoSeconds = () => {
 setTimeout(() => {
     complete.value = true;
-    console.log('complete is now true');
 }, 2000);
 }
 const getLink = (link:any) => {
@@ -221,7 +314,6 @@ const getLink = (link:any) => {
     return new_link
 }
 const deleteImage = (i:any) => {
-    console.log("my index is", i);
     uploaded_images.value.splice(i, 1)
     toast.add({ severity: 'success', summary: 'Image Deleted', detail: "Image Removed", life: 2000 });
 }
@@ -241,12 +333,13 @@ const onAdvancedUpload = async (event:any) => {
     };
 const addProperty = async () => {
     let amm = [
-        { name: 'Bedrooms', total: bedrooms.value ? null : 0},
-        { name: 'Bathrooms', total: bathrooms.value ? null : 0},
-        { name: 'Area', total: area.value ? null : 0},
-        { name: 'Lounges', total: lounges.value ? null : 0},
-        { name: 'Garages', total: garages.value ? null : 0}
+        { name: 'Bedrooms', total: bedrooms.value ? bedrooms.value : 0},
+        { name: 'Bathrooms', total: bathrooms.value ? bathrooms.value : 0},
+        { name: 'Area', total: area.value ? area.value : 0},
+        { name: 'Lounges', total: lounges.value ? lounges.value : 0},
+        { name: 'Garages', total: garages.value ? garages.value : 0}
     ]
+    let my_listing_type = selected_listing_type.value === 'FOR SALE' ? 'FOR_SALE' : 'FOR_RENT'
     let data = {
         property_name: property_name.value,
         description: description.value,
@@ -254,8 +347,10 @@ const addProperty = async () => {
         owner_email: owner_email.value,
         owner_name: owner_name.value,
         owner_phone: owner_phone.value,
+        listing_types: my_listing_type,
         reference_code: reference_code.value,
         location: selected_location.value,
+        suburb: selected_suburb.value,
         type: selected_type.value,
         amount: amount.value,
         agent: id.value,
@@ -293,6 +388,12 @@ const getLocations = async () => {
         loading.value = false
     })
 }
+const getSuburbs = async () => {
+    let result = await adminStore.getSuburbs().then((data) => {
+        suburbs.value = data?.data?.locations
+        loading.value = false
+    })
+}
 
 onMounted(async() => {
     loading.value = true
@@ -301,6 +402,7 @@ onMounted(async() => {
     await getProperties()
     await getPropertyTypes()
     await getLocations()
+    await getSuburbs()
 });
 
 
@@ -313,8 +415,9 @@ const initFilters = () => {
 
 initFilters();
 
-const formatDate = (value:any) => {
-    return value.toLocaleDateString('en-US', {
+const formatDate = (value: string) => {
+    const date = new Date(value);
+    return date.toLocaleDateString('en-US', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric'
@@ -328,3 +431,19 @@ const clearFilter = () => {
 };
 
 </script>
+<style>
+tr.kt {
+    width: 100% !important;
+    border: solid 1px #e6dada !important;
+}
+td.ky {
+    color: white;
+    background-color: #171c2b;
+    padding: 2px;
+}
+td.kyy {
+    color: white;
+    background-color: #ebc562;
+    padding: 4px;
+}
+</style>
