@@ -47,11 +47,21 @@ model Location {
   id String @id @default(cuid())
   location_name String
   status Boolean @default(true)
+  suburbs Suburbs[]
   properties Property[]
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
 }
-
+model Suburbs {
+  id String @id @default(cuid())
+  suburb_name String
+  status Boolean @default(true)
+  location_id String
+  property Property[]
+  location Location @relation(fields: [location_id],references: [id])
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+}
 model Property {
   id String @id @default(cuid())
   name String
@@ -64,18 +74,26 @@ model Property {
   showDate DateTime?
   on_show Boolean @default(false)
   amount Float
+  listing_status ListingStatus @default(FOR_SALE)
   status propStatus  @default(LISTED)
   location_id String
+  suburb_id String?
   features Features[]
   images Json?
   other_features Json?
   type_id String
   agent_id String
+  suburb Suburbs? @relation(fields: [suburb_id],references: [id])
   location Location @relation(fields: [location_id],references: [id])
   agent User @relation(fields: [agent_id],references: [id])
   prop_type PropertyType @relation(fields: [type_id],references: [id])
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
+}
+
+enum ListingStatus {
+  FOR_SALE
+  FOR_RENT
 }
 
 model Features {
