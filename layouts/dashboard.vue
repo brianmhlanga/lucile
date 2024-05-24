@@ -359,6 +359,13 @@
                 command: () => {
                     navigateTo('/admin/locations')
                 }
+            },
+            {
+                label: 'Suburbs',
+                icon: 'pi pi-compass',
+                command: () => {
+                    navigateTo('/admin/suburbs')
+                }
             }
         ]
     },
