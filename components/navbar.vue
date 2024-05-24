@@ -63,32 +63,44 @@ const stores:any = ref([])
 const items = ref([
     {
         label: 'Home',
-        link: '/',
+        command: () => {
+               navigateTo('/')
+        },
         root: true
     },
     {
         label: 'For Sale',
-        link: '/#features',
+        command: () => {
+               navigateTo('/for_sale')
+        },
         root: true
     },
     {
         label: 'For Rent',
-        link: '/#pricing',
+        command: () => {
+               navigateTo('/for_rent')
+        },
         root: true
     },
     {
         label: 'About Us',
-        link: '#',
+        command: () => {
+               navigateTo('/about_us')
+        },
         root: true
     },
     {
         label: 'Showdays',
-        link: '#',
+        command: () => {
+               navigateTo('/show_days')
+        },
         root: true
     },
     {
         label: 'Contact Us',
-        link: '#',
+        command: () => {
+               navigateTo('/contact_us')
+        },
         root: true
     },
     {
