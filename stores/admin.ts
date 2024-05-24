@@ -57,10 +57,138 @@ export const useAdminStore = defineStore('admin', {
             });
             return result;
         },
+        async  getSuburbs(){
+            var config = {
+                method: 'post',
+                url: '/admin/all_suburbs',
+                headers: { 
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  getSuburbTotals(data:any){
+            var config = {
+                method: 'post',
+                url: '/admin/all_suburb_totals',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data:data
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
         async  getProperties(){
             var config = {
                 method: 'post',
                 url: '/admin/all_properties',
+                headers: { 
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  getFilteredProperties(data:any){
+            var config = {
+                method: 'post',
+                url: '/admin/all_filtered_properties',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  getProperty(data:any){
+            var config = {
+                method: 'post',
+                url: '/admin/single_property',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  getLiveProperties(){
+            var config = {
+                method: 'post',
+                url: '/admin/all_live_properties',
                 headers: { 
                     'Content-Type': 'application/json'
                 }
@@ -111,6 +239,32 @@ export const useAdminStore = defineStore('admin', {
             var config = {
                 method: 'post',
                 url: '/admin/add_location',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  addSuburbs(data:any){
+            var config = {
+                method: 'post',
+                url: '/admin/add_suburb',
                 headers: { 
                     'Content-Type': 'application/json'
                 },
