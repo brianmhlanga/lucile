@@ -3,115 +3,80 @@
       <div class="font-bold goTo text-3xl toptext text-center">Featured Properties</div>
       <div class="text-700 text-center mb-5 line-height-3">Curated list of the best real estate listings available</div>
     </div>
-        <div class="container">
-            
-      <div class="box">
-        <div class="top">
-          <img src="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271__340.jpg" alt="" />
-          <span
-            ><i class="fas fa-heart"></i><i class="fas fa-exchange-alt"></i
-          ></span>
+    <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+      <div class="grid -mt-3 -ml-3 -mr-3">
+  <div v-for="property in properties" class="col-12 md:col-4 lg:col-3">
+    <div class="p-2">
+      <div class="shadow-2 p-4 surface-card border-round">
+        <div class="relative mb-3">
+          <span v-if="property?.listing_status === 'FOR_SALE'" class=" for_sale surface-card listing_type text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem;">FOR SALE</span>
+          <span v-if="property?.listing_status === 'FOR_RENT'"  class="for_rent surface-card listing_type text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem;">FOR RENT</span>
+          <Galleria :value="property?.images" :showThumbnails="false" :showIndicators="true" :responsiveOptions="responsiveOptions" :numVisible="5" containerStyle="max-width: 640px"
+            :circular="true" :autoPlay="true" :transitionInterval="2000">
+            <template #item="slotProps">
+                <img :src="getLink(slotProps.item.image_url)" style="width: 100%; display: block" />
+            </template>
+        </Galleria>
         </div>
-        <div class="bottom">
-          <h3>Home In Merrick Way</h3>
-          <p>
-            Enchanting three bedrooms, three bath home with spacious one
-            bedroom, one bath...
-          </p>
-          <div class="advants">
-            <div>
+        <div class="flex justify-content-between align-items-center mb-3">
+          <span class="text-900 font-medium text-xl">{{ property?.name }}<br><span class="location"><i class="pi pi-map-marker"></i>{{ property?.address }}</span></span>
+          <span>
+            <span class="font-medium">{{ property?.location?.location_name }}</span>
+          </span>
+        </div>
+        <p class="mt-0 mb-3 text-600 line-height-3">{{ property?.description }}</p>
+        <div class="flex align-items-center mb-3">
+          <div class="tyy">
               <span>Bedrooms</span>
-              <div><i class="pi pi-objects-column"></i><span>3</span></div>
+              <div><i class="pi pi-objects-column ttut"></i><span>{{ property?.features[0].total ? property?.features[0].total : 0 }}</span></div>
             </div>
-            <div>
+            <div class="tyy">
               <span>Bathrooms</span>
-              <div><i class="pi pi-hourglass"></i><span>3</span></div>
+              <div><i class="pi pi-hourglass ttut"></i><span>{{ property?.features[1].total ? property?.features[1].total : 0 }}</span></div>
             </div>
-            <div>
+            <div class="tyy">
               <span>Area</span>
               <div>
-                <i class="pi pi-expand"></i><span>4300<span>Sq Ft</span></span>
+                <i class="pi pi-expand ttut"></i><span>{{ property?.features[2].total ? property?.features[2].total : 0 }}<span> Sq Mtrs</span></span>
               </div>
             </div>
-          </div>
-          <div class="price">
-            <span>For Sale</span>
-            <span>$540,000</span>
-          </div>
-        </div>
-      </div>
-      <div class="box">
-        <div class="top">
-          <img src="https://cdn.pixabay.com/photo/2014/07/31/00/30/vw-beetle-405876__340.jpg" alt="" />
-          <span
-            ><i class="fas fa-heart"></i><i class="fas fa-exchange-alt"></i
-          ></span>
-        </div>
-        <div class="bottom">
-          <h3>Villa In Alexandria</h3>
-          <p>
-            Enjoy serenity of Deering Bay whole day from this spectacular North
-            and...
-          </p>
-          <div class="advants">
-            <div>
-              <span>Bedrooms</span>
-              <div><i class="pi pi-objects-column"></i><span>3</span></div>
-            </div>
-            <div>
-              <span>Bathrooms</span>
-              <div><i class="pi pi-hourglass"></i><span>3.5</span></div>
-            </div>
-            <div>
-              <span>Area</span>
-              <div>
-                <i class="pi pi-expand"></i><span>3500<span>Sq Ft</span></span>
-              </div>
-            </div>
-          </div>
-          <div class="price">
-            <span>For Sale</span>
-            <span>$825,000</span>
-          </div>
-        </div>
-      </div>
-      <div class="box">
-        <div class="top">
-          <img src="https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070__340.jpg" alt="" />
-          <span
-            ><i class="fas fa-heart"></i><i class="fas fa-exchange-alt"></i
-          ></span>
-        </div>
-        <div class="bottom">
-          <h3>Villa In Cairo</h3>
-          <p>
-            The very best waterfront location in Tahrir square and beside many
-            cool places
-          </p>
-          <div class="advants">
-            <div>
-              <span>Bedrooms</span>
-              <div><i class="pi pi-objects-column"></i><span>3</span></div>
-            </div>
-            <div>
-              <span>Bathrooms</span>
-              <div><i class="pi pi-hourglass"></i><span>2</span></div>
-            </div>
-            <div>
-              <span>Area</span>
-              <div>
-                <i class="pi pi-expand"></i><span>1800<span>Sq Ft</span></span>
-              </div>
-            </div>
-          </div>
-          <div class="price">
-            <span>For Sale</span>
-            <span>$410,000</span>
-          </div>
-        </div>
-      </div>
+       </div>
+        <span class="text-primary text-xl font-medium">{{ formatCurrency(property?.amount) }}</span>
+        <Button @click="navigateTo(`/detail-${property?.id}`)" class="p-component detail-button cursor-pointer p-3 surface-900 hover:surface-800 border-none text-0 w-full transition-all transition-duration-300 text-center p-ripple" label="Details" />
+       </div>
+    </div>
+  </div>
+</div>
     </div>
 </template>
+<script lang="ts" setup>
+const adminStore = useAdminStore()
+let properties = ref()
+
+onMounted(async() => {
+
+  let results = await adminStore.getLiveProperties().then((data) => {
+    properties.value = data?.data?.properties
+  })
+})
+const formatCurrency = (value:any) => {
+    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+};
+const getLink = (link:any) => {
+    let new_link = `/images/${link}`
+    return new_link
+}
+const responsiveOptions = ref([
+    {
+        breakpoint: '1300px',
+        numVisible: 4
+    },
+    {
+        breakpoint: '575px',
+        numVisible: 1
+    }
+]);
+</script>
 <style scoped>
 * {
   box-sizing: border-box;
@@ -126,6 +91,32 @@ body {
 .topcurated {
     margin-top: 60px !important;
 }
+.ttut {
+    font-weight: 300;
+    font-size: 16px;
+    margin-right: 8px;
+}
+span.text-900.font-medium.text-xl {
+    font-size: 23px !important;
+    font-weight: 800 !important;
+}
+span.location {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: oblique;
+}
+span.for_rent {
+    background-color: #ecc36b !important;
+    color: white !important;
+}
+span.for_sale {
+    background-color: #27303d !important;
+    color: white !important;
+}
+.detail-button {
+    background-color: #27303d !important;
+    margin-top: 5px;
+}
 .container {
     width: 1100px;
     margin-top: 10px !important;
@@ -133,14 +124,21 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.tyy {
+    margin-right: 35px;
+}
 
+.listing_type {
+  border-radius: 8px !important;
+  z-index: 1 !important;
+}
 .container .box {
   width: calc((100% / 3) - 20px);
   background-color: white;
   position: relative;
 }
 
-.container .box:first-of-type:before {
+.container .box:before {
   content: "Featured";
   background-color: #ecc36b;
   color: white;
