@@ -6,7 +6,11 @@ let response:any = {}
 
 try {
 
-    let locations = await prisma.location.findMany()
+    let locations = await prisma.location.findMany({
+        include: {
+            suburbs: true
+        }
+    })
     response['locations'] = locations
     response['success'] = true
 
