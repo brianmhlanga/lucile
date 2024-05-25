@@ -6,27 +6,40 @@
         <div class="surface-ground">
   <div class="grid -mr-3 -ml-3">
     <div class="col-12 lg:col-9">
+        <div class="sort-by">
+        <h4>Properties: <span>{{ properties ? properties.length : 0 }}</span></h4>
+        <div class="form-group xyx">
+            <div>
+                <Dropdown @change="getAllProperties()" v-model="selected_sort_option" :options="sort_options" />
+            </div>
+        </div>
+       </div>
         <div class="grid formgrid p-fluid border-round ">
-    <div class="border-round surface-border border-1 col-12">
+    <div class="border-round surface-border col-12">
         <ul class="list-none p-0 m-0">
             <li v-for="property in properties" class="surface-border flex">
                 <div class="grid col-12 surface-card mb-5 border-round shadow-2">
-                    <div class="col-6">
+                    <div class="col-4">
                         <img :src="getLink(property?.images[0]?.image_url)" alt="Image" class="border-round-left" style="height: auto; width: 100%;">
                     </div>
-                    <div class="col-6 p-4">
+                    <div class="col-8 p-4">
                         <div class="flex justify-content-between mb-3">
                             <span class="text-orange-500 font-medium">{{ property?.name }}</span>
                             <span class="text-500 sale text-lg font-medium" style="white-space: nowrap;">FOR RENT</span>
                         </div>
                         <div class="font-medium text-900 mb-3 line-height-3"><i class="pi pi-map-marker" style="font-size: 1rem;font-weight: 900;margin-right: 10px;"></i>{{ property?.address }}, {{ property?.suburb?.suburb_name }}, {{ property?.location?.location_name }}</div>
-                        <div class="line-height-3 text-lg text-900 mb-3">{{ property?.description }}</div>
+                        <div id="descriptionContainer">
+                            <!-- Your HTML content here -->
+                            <div class="line-height-3 text-lg text-900 mb-3" v-html="property?.description"></div>
+                        </div>
+                        <div class="text-700 text-3xl mb-5">{{ property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}/pm</div>
                         <div class="detail_button">
                             <Button class="w-4 ghf" @click="navigateTo(`/detail-${property.id}`)" label="Details" />
                         </div>
                     </div>
                 </div>
             </li>
+            <Paginator  @page="getAllProperties()" v-model:first="first" v :rows="items_per_page" :totalRecords="number_of_records ? number_of_records : 0"></Paginator>
         </ul>
     </div>
 </div>
@@ -53,15 +66,38 @@
  
 </template>
 <script lang="ts" setup>
+import type { RefSymbol } from '@vue/reactivity';
+
 const adminStore = useAdminStore()
 const properties = ref()
 const suburbs = ref()
-onMounted(async() => {
+const selected_sort_option = ref('DEFAULT')
+const first = ref(0)
+const items_per_page = ref(10)
+const number_of_records = ref(0)
+const sort_options = ref(['DEFAULT','MOST RECENT',"HIGHEST PRICE","LOWEST PRICE"])
+const getAllProperties = async() => {
     let data = {
-      status: "FOR_RENT"
+      status: "FOR_RENT",
+      sort: selected_sort_option.value,
+      first: 0,
+      last: items_per_page.value
     }
     let result = await adminStore.getFilteredProperties(data).then((data) => {
       properties.value = data?.data?.properties
+      number_of_records.value = data?.data?.total
+    })
+}
+onMounted(async() => {
+    let data = {
+      status: "FOR_RENT",
+      sort: selected_sort_option.value,
+      first: 0,
+      last: items_per_page.value
+    }
+    let result = await adminStore.getFilteredProperties(data).then((data) => {
+      properties.value = data?.data?.properties
+      number_of_records.value = data?.data?.total
     })
     let subbs = await adminStore.getSuburbTotals(data).then((data) => {
      console.log("datatat",data?.data?.properties)
@@ -120,5 +156,12 @@ span.text-orange-500.font-medium {
     border: none;
     height: 45px;
     justify-content: space-between;
+}
+.sort-by {
+    display: flex;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
