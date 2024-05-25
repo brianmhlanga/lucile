@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['nuxt-primevue',"@pinia/nuxt", "@nuxt/image","nuxt-swiper"],
+  modules: [
+    'nuxt-primevue',
+    "@pinia/nuxt",
+    "@nuxt/image",
+    "nuxt-swiper"
+  ],
   swiper: {
     // Swiper options
     //----------------------
