@@ -11,14 +11,14 @@
         <div class="grid">
   <div class="col-12 lg:col-12">
     <div class="grid">
-       <div class="col-12 lg:col-10">
+       <div class="col-12 lg:col-9">
         <div class="flex justify-content-between align-items-center mb-3">
           <span class="text-900 font-medium text-xl pnames">{{ property?.name }}<br><span class="location wises"><i class="pi pi-map-marker"></i>{{ property?.address }}, {{ property?.suburb?.suburb_name }}</span></span>
         </div>
        </div>
-       <div class="col-12 lg:col-2">
+       <div class="col-12 lg:col-3">
         <div class="flex justify-content-between align-items-center mb-3">
-          <span class="text-900 font-medium text-xl pnames">{{property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}<br><span class="location wises">{{ property?.refrence_code }}</span></span>
+          <span class="text-900 font-medium text-xl pnames amount">{{property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}<span v-if="property?.listing_status === 'FOR_RENT'">/pm</span><br><span class="location wises">{{ property?.refrence_code }}</span></span>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
   <div class="col-12 lg:col-12 py-3 lg:pl-6">
     <div id="pv_id_70_0_content" class="p-tabview-panel" role="tabpanel" aria-labelledby="pv_id_70_0_header_action" data-pc-section="content" data-pc-name="tabpanel" data-pc-index="0" data-p-active="true">
   <div class="text-900 font-medium text-3xl mb-4 mt-2">Description & Details</div>
-  <p class="line-height-3 text-700 p-0 mx-0 mt-0 mb-4">{{ property?.description }}</p>
+  <div class="line-height-3 text-700 p-0 mx-0 mt-0 mb-4" v-html="property?.description"></div>
   <div class="grid">
     <div class="col-12 lg:col-6">
       <span class="text-900 block font-medium mb-3">Main Features</span>
