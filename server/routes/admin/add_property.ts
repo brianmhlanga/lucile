@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
         //     token: z.string()
         // });
         // Destruct body
-        const { property_name,listing_types,agent,description,address,owner_email,owner_name,owner_phone,suburb,location,type,amount,ammenities,other_ammenities,uploaded_images,is_available_on_show,showdate, token } = data
+        const { property_name,listing_types,agent,show_start_time,show_end_time,description,address,owner_email,owner_name,owner_phone,suburb,location,type,amount,ammenities,other_ammenities,uploaded_images,is_available_on_show,showdate, token } = data
 
         // const validateBody = bodySchema.safeParse(data);
         //Get env variables
@@ -51,7 +51,9 @@ export default defineEventHandler(async (event) => {
                 images: uploaded_images,
                 other_features: other_ammenities,
                 on_show: is_available_on_show,
-                showDate: showdate
+                showDate: showdate,
+                showStartTime: show_start_time,
+                showEndTime: show_end_time
             }
         });
         const addIdToObjectArray = (arr: any[], propertyId: string) => {

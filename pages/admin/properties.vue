@@ -130,7 +130,7 @@
     </div>
     <div class="field mb-4 col-12">
       <label for="notes" class="font-medium text-900">Description</label>
-      <textarea v-model="description" class="p-inputtextarea p-inputtext p-component p-inputtextarea-resizable" data-pc-name="textarea" data-pc-section="root" id="notes" rows="5" style="height: 120px; overflow: hidden;" data-lt-tmp-id="lt-488940" spellcheck="false" data-gramm="false"></textarea>
+      <Editor v-model="description" editorStyle="height: 320px" />
     </div>
     <div class="field mb-4 col-6 md:col-6">
       <label for="invoice_id" class="font-medium text-900">Address</label>
@@ -223,9 +223,17 @@
       <span class="ml-2 text-900">Check if you want the Property available on Showday</span>
     </div>
     
-    <div v-if="is_available_on_show" class="field mb-4 col-6 md:col-6">
+    <div v-if="is_available_on_show" class="field mb-4 col-4 md:col-4">
       <label for="invoice_date" class="font-medium text-900">Showday Date</label>
       <Calendar v-model="showdate" showIcon iconDisplay="input" />
+    </div>
+    <div v-if="is_available_on_show" class="field mb-4 col-4 md:col-4">
+      <label for="invoice_date" class="font-medium text-900">Showday Start Time</label>
+      <Calendar id="calendar-timeonly" v-model="show_start_time" timeOnly />
+    </div>
+    <div v-if="is_available_on_show" class="field mb-4 col-4 md:col-4">
+      <label for="invoice_date" class="font-medium text-900">Showday End Time</label>
+      <Calendar id="calendar-timeonly" v-model="show_end_time" timeOnly />
     </div>
  
   </div>
@@ -239,6 +247,7 @@
 </template>
 <script lang="ts" setup>
 import { FilterMatchMode, FilterOperator } from 'primevue/api';
+import Editor from 'primevue/editor';
 import { useAuthStore } from '~/stores/auth';
 import { useToast } from "primevue/usetoast";
 import { useAdminStore } from '~/stores/admin';
@@ -251,6 +260,7 @@ definePageMeta({
 const toast = useToast()
 const property_name = ref()
 const description = ref()
+const newDescription = ref("")
 const address = ref()
 const owner_email = ref()
 const owner_name = ref()
@@ -262,6 +272,8 @@ const listing_types = ref(['FOR SALE',"FOR RENT"])
 const selected_type = ref()
 const bedrooms = ref()
 const showdate = ref()
+const show_start_time = ref()
+const show_end_time = ref()
 const garages = ref()
 const lounges = ref()
 const bathrooms = ref()
@@ -359,6 +371,8 @@ const addProperty = async () => {
         uploaded_images: uploaded_images.value,
         is_available_on_show: is_available_on_show.value,
         showdate: showdate.value,
+        show_start_time: show_start_time.value,
+        show_end_time: show_end_time.value,
         token: token.value
     } 
     let results = await adminStore.addProperty(data).then( async(data) => {

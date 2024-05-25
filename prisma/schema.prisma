@@ -65,13 +65,15 @@ model Suburbs {
 model Property {
   id String @id @default(cuid())
   name String
-  description String?
-  address String?
+  description String? @db.LongText
+  address String?  @db.LongText
   owner_name String?
   refrence_code String?
   owner_email String?
   owner_phone String?
   showDate DateTime?
+  showStartTime DateTime?
+  showEndTime DateTime?
   on_show Boolean @default(false)
   amount Float
   listing_status ListingStatus @default(FOR_SALE)
