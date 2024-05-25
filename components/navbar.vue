@@ -92,7 +92,7 @@ const items = ref([
     {
         label: 'Showdays',
         command: () => {
-               navigateTo('/show_days')
+               navigateTo('/showdays')
         },
         root: true
     },
@@ -105,7 +105,9 @@ const items = ref([
     },
     {
         label: 'Login',
-        link: '#',
+        command: () => {
+               navigateTo('/login')
+        },
         root: true
     }
 ]);
