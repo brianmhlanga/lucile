@@ -15,41 +15,36 @@
   <div class="grid formgrid p-fluid">
     <div class="field mb-4 col-12 md:col-3">
       <label for="company_name" class="font-medium text-900">Location</label>
-      <InputText class="p-inputtext p-component" placeholder="Search Location" />
+      <MultiSelect v-model="selectedLocations" display="chip" :options="locations" optionValue="id" optionLabel="location_name" placeholder="Select Cities or Suburbs"  class="w-full md:w-20rem" />
     </div>
     <div class="field mb-4 col-12 md:col-3">
       <label for="invoice_id" class="font-medium text-900">Property Types</label>
-      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="invoice_id" type="text">
+      <MultiSelect v-model="selectedPropertyTypes" display="chip" :options="property_types" optionValue="id" optionLabel="name" placeholder="Select Property Types"  class="w-full md:w-20rem" />
     </div>
     <div class="field mb-4 col-12 md:col-2">
-      <label for="customer_name" class="font-medium text-900">Refrence Code</label>
-      <InputText class="p-inputtext p-component" placeholder="Ref Code" />
+      <label for="customer_name" class="font-medium text-900">Reference Code</label>
+      <InputText v-model="reference_code" class="p-inputtext p-component" placeholder="Ref Code" />
     </div>
     <div  class="topbuttons field mb-4 col-12 md:col-4">
-      <ToggleButton v-model="checked" onLabel="Advanced Options" offLabel="Advanced Options" onIcon="pi pi-lock" 
-            offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="Advanced Options" />
-      <button class="p-button p-component w-auto" type="button" aria-label="Create Invoice" data-pc-name="button" data-pc-section="root" data-pd-ripple="true">
-        <span class="p-button-icon p-button-icon-left pi pi-search" data-pc-section="icon"></span>
-        <span class="p-button-label" data-pc-section="label">Search</span>
-        <!---->
-        <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
-      </button>
+      <ToggleButton v-model="checked" onLabel="More Options" offLabel="More Options" onIcon="pi pi-lock" 
+            offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="More Options" />
+      <Button :loading="search_loader" @click="getSaleSearchedProperties()" icon="pi pi-search" class="w-auto" label="search" />
     </div>
     <div v-if="checked" class="field mb-4 col-12 md:col-3">
       <label for="customer_email" class="font-medium text-900">Min Price</label>
-      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+      <Dropdown v-model="min_amount"  placeholder="Select Minimum amount" :options="for_sale_values" />
     </div>
     <div v-if="checked" class="field mb-4 col-12 md:col-3">
       <label for="customer_email" class="font-medium text-900">Max Price</label>
-      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+      <Dropdown v-model="max_amount" placeholder="Select Maximum amount" :options="for_sale_values" />
     </div>
     <div v-if="checked" class="field mb-4 col-12 md:col-3">
       <label for="customer_email" class="font-medium text-900">Beds</label>
-      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+      <Dropdown v-model="min_beds" placeholder="Select Beds" :options="beds_baths_options" />
     </div>
     <div v-if="checked" class="field mb-4 col-12 md:col-3">
       <label for="customer_email" class="font-medium text-900">Baths</label>
-      <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
+      <Dropdown v-model="min_baths" placeholder="Select Bathrooms" :options="beds_baths_options" />
     </div>
   </div>
   
@@ -62,48 +57,43 @@
             </div>
         </template>
         <div class="surface-card p-4 shadow-2 border-round p-fluid">
-        <div class="grid formgrid p-fluid">
-          <div class="field mb-4 col-12 md:col-3">
-            <label for="company_name" class="font-medium text-900">Location</label>
-            <InputText class="p-inputtext p-component" placeholder="Search Location" />
-          </div>
-          <div class="field mb-4 col-12 md:col-3">
-            <label for="invoice_id" class="font-medium text-900">Property Types</label>
-            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="invoice_id" type="text">
-          </div>
-          <div class="field mb-4 col-12 md:col-2">
-            <label for="customer_name" class="font-medium text-900">Refrence Code</label>
-            <InputText class="p-inputtext p-component" placeholder="Ref Code" />
-          </div>
-          <div  class="topbuttons field mb-4 col-12 md:col-4">
-            <ToggleButton v-model="checked" onLabel="Advanced Options" offLabel="Advanced Options" onIcon="pi pi-lock" 
-                  offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="Advanced Options" />
-            <button class="p-button p-component w-auto" type="button" aria-label="Create Invoice" data-pc-name="button" data-pc-section="root" data-pd-ripple="true">
-              <span class="p-button-icon p-button-icon-left pi pi-search" data-pc-section="icon"></span>
-              <span class="p-button-label" data-pc-section="label">Search</span>
-              <!---->
-              <span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span>
-            </button>
-          </div>
-          <div v-if="checked" class="field mb-4 col-12 md:col-3">
-            <label for="customer_email" class="font-medium text-900">Min Price</label>
-            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
-          </div>
-          <div v-if="checked" class="field mb-4 col-12 md:col-3">
-            <label for="customer_email" class="font-medium text-900">Max Price</label>
-            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
-          </div>
-          <div v-if="checked" class="field mb-4 col-12 md:col-3">
-            <label for="customer_email" class="font-medium text-900">Beds</label>
-            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
-          </div>
-          <div v-if="checked" class="field mb-4 col-12 md:col-3">
-            <label for="customer_email" class="font-medium text-900">Baths</label>
-            <input class="p-inputtext p-component" data-pc-name="inputtext" data-pc-section="root" id="customer_email" type="text">
-          </div>
-        </div>
-        
-      </div>
+  <div class="grid formgrid p-fluid">
+    <div class="field mb-4 col-12 md:col-3">
+      <label for="company_name" class="font-medium text-900">Location</label>
+      <MultiSelect v-model="selectedLocations" display="chip" :options="locations" optionValue="id" optionLabel="location_name" placeholder="Select Cities or Suburbs"  class="w-full md:w-20rem" />
+    </div>
+    <div class="field mb-4 col-12 md:col-3">
+      <label for="invoice_id" class="font-medium text-900">Property Types</label>
+      <MultiSelect v-model="selectedPropertyTypes" display="chip" :options="property_types" optionValue="id" optionLabel="name" placeholder="Select Property Types"  class="w-full md:w-20rem" />
+    </div>
+    <div class="field mb-4 col-12 md:col-2">
+      <label for="customer_name" class="font-medium text-900">Reference Code</label>
+      <InputText v-model="reference_code" class="p-inputtext p-component" placeholder="Ref Code" />
+    </div>
+    <div  class="topbuttons field mb-4 col-12 md:col-4">
+      <ToggleButton v-model="checked" onLabel="More Options" offLabel="More Options" onIcon="pi pi-lock" 
+            offIcon="pi pi-lock-open" class="w-12rem lockbtn" aria-label="More Options" />
+      <Button :loading="search_loader" @click="getRentSearchedProperties()" icon="pi pi-search" class="w-auto" label="search" />
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Min Price</label>
+      <Dropdown v-model="min_amount"  placeholder="Select Minimum amount" :options="for_rent_values" />
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Max Price</label>
+      <Dropdown v-model="max_amount" placeholder="Select Maximum amount" :options="for_rent_values" />
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Beds</label>
+      <Dropdown v-model="min_beds" placeholder="Select Beds" :options="beds_baths_options" />
+    </div>
+    <div v-if="checked" class="field mb-4 col-12 md:col-3">
+      <label for="customer_email" class="font-medium text-900">Baths</label>
+      <Dropdown v-model="min_baths" placeholder="Select Bathrooms" :options="beds_baths_options" />
+    </div>
+  </div>
+  
+</div>
     </TabPanel>
 </TabView>
       </div>
@@ -113,45 +103,133 @@
 </div>
 </template>
 <script lang="ts" setup>
-const checked = ref(false);
-const images = ref(
-  [
-    {
-      image: 'https://tmpnponline.co.zw/wp-content/uploads/2022/08/The-Perfect-Platters-scaled.jpg'
-    },
-    {
-      image: 'https://tmpnponline.co.zw/wp-content/uploads/2022/08/Butcheries-Best-cuts-scaled.jpg'
-    },
-    {
-      image: 'https://tmpnponline.co.zw/wp-content/uploads/2021/11/Fresh-of-the-Farm-scaled.jpg'
-    },
-    {
-      image: 'https://tmpnponline.co.zw/wp-content/uploads/2022/08/Liquor-best-buys-new.png'
+import type { RefSymbol } from '@vue/reactivity';
+
+const adminStore = useAdminStore()
+const properties = ref()
+const suburbs = ref()
+const selected_sort_option = ref('DEFAULT')
+const first = ref(0)
+const selectedLocations = ref()
+const checked = ref(false)
+const property_types = ref()
+const selectedPropertyTypes = ref()
+const items_per_page = ref(10)
+const reference_code = ref()
+const locations = ref()
+const number_of_records = ref(0)
+const toast = useToast()
+const search_loader = ref(false)
+const min_amount = ref()
+const max_amount = ref()
+const min_beds = ref()
+const min_baths = ref()
+const for_sale_values = ref(["$15,000","$25,000","$50,000","$75,000","$100,000","$120,000","$150,000","$175,000","$200,000","$250,000","$300,000","$400,000","$500,000","$750,000","$1,000,000","$2,500,000"])
+const for_rent_values = ref(["$100","$200","$400","$500","$700","$800","$1,000","$1,300","$1,500","$2,000","$3,000","$5,000","$7,000","$10,000","$15,000"])
+const sort_options = ref(['DEFAULT','MOST RECENT',"HIGHEST PRICE","LOWEST PRICE"])
+const beds_baths_options = ref(['1+', '2+', '3+', '4+', '5+'])
+const getSaleSearchedProperties = async () => {
+    search_loader.value = true
+    let data = {
+        locations: selectedLocations.value,
+        types: selectedPropertyTypes.value,
+        reference_code: reference_code.value,
+        min_amount: min_amount.value,
+        max_amount: max_amount.value,
+        min_beds: min_beds.value,
+        min_baths: min_baths.value,
+        status: "FOR_SALE",
+        sort: selected_sort_option.value,
+        first: 0,
+        last: items_per_page.value
     }
-  ]
-);
+    let queryParams = JSON.stringify(data)
+    navigateTo(`/hero_search-${queryParams}`)
+}
+const getRentSearchedProperties = async () => {
+    search_loader.value = true
+    let data = {
+        locations: selectedLocations.value,
+        types: selectedPropertyTypes.value,
+        reference_code: reference_code.value,
+        min_amount: min_amount.value,
+        max_amount: max_amount.value,
+        min_beds: min_beds.value,
+        min_baths: min_baths.value,
+        status: "FOR_RENT",
+        sort: selected_sort_option.value,
+        first: 0,
+        last: items_per_page.value
+    }
+    let queryParams = JSON.stringify(data)
+    navigateTo(`/hero_search-${queryParams}`)
+}
+const getAllProperties = async() => {
+    let data = {
+      status: "FOR_RENT",
+      sort: selected_sort_option.value,
+      first: 0,
+      last: items_per_page.value
+    }
+    let result = await adminStore.getFilteredProperties(data).then((data) => {
+      properties.value = data?.data?.properties
+      number_of_records.value = data?.data?.total
+    })
+}
+onMounted(async() => {
+    let data = {
+      status: "FOR_RENT",
+      sort: selected_sort_option.value,
+      first: 0,
+      last: items_per_page.value
+    }
+    let result = await adminStore.getFilteredProperties(data).then((data) => {
+      properties.value = data?.data?.properties
+      number_of_records.value = data?.data?.total
+    })
+    let subuss = await adminStore.getSuburbs().then((data)=> {
+        console.log("suburbs",data?.data?.locations)
+        suburbs.value = data?.data?.locations
+    })
+    let subusss = await adminStore.getLocations().then((data)=> {
+        console.log("suburbs",data?.data?.locations)
+        locations.value = data?.data?.locations
+    })
+    let codes = await adminStore.getPropertyTypes().then((data) => {
+        console.log("property type",data?.data?.types)
+        property_types.value = data?.data?.types
+    })
+    let subbs = await adminStore.getSuburbTotals(data).then((data) => {
+     console.log("datatat",data?.data?.properties)
+     suburbs.value = data?.data?.properties
+
+    })
+})
 const responsiveOptions = ref([
     {
-        breakpoint: '1400px',
-        numVisible: 2,
-        numScroll: 1
-    },
-    {
-        breakpoint: '1199px',
-        numVisible: 3,
-        numScroll: 1
-    },
-    {
-        breakpoint: '767px',
-        numVisible: 2,
-        numScroll: 1
+        breakpoint: '1300px',
+        numVisible: 4
     },
     {
         breakpoint: '575px',
-        numVisible: 1,
-        numScroll: 1
+        numVisible: 1
     }
 ]);
+
+const callAgent = async (pn:any) => {
+  console.log("pn",pn)
+  navigateTo(`tel:${pn}`,{
+    external: true
+  })
+}
+
+const formatCurrency = (value:any) => {
+    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+};
+const getLink = (link:any) => {
+    let new_link = `/images/${link}`
+    return new_link
+}
 </script>
 <style>
 .topbuttons {
