@@ -127,14 +127,9 @@
                             <span class="text-500 sale text-lg font-medium" style="white-space: nowrap;">FOR SALE</span>
                         </div>
                         <div class="font-medium text-900 mb-3 line-height-3"><i class="pi pi-map-marker" style="font-size: 1rem;font-weight: 900;margin-right: 10px;"></i>{{ property?.address }}, {{ property?.suburb?.suburb_name }}, {{ property?.location?.location_name }}</div>
-                        <div id="descriptionContainer">
                             <!-- Your HTML content here -->
-                            <div class="line-height-3 text-lg text-900 mb-3" v-html="property?.description"></div>
-                        </div>
-                        <div class="text-700 text-3xl mb-5">{{ property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}</div>
-                        <div class="detail_button">
-                            <Button class="w-4 ghf" @click="navigateTo(`/detail-${property.id}`)" label="Details" />
-                        </div>
+                            <p class="line-height-3 text-lg text-900 mb-3 descriptionn" v-html="property?.description"></p>
+                            <div class="flex justify-content-between border-top-1 surface-border mb-4 pt-4"><span class="text-xl text-900 font-bold text-3xl">{{ property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}</span><Button class="w-4 ghf" @click="navigateTo(`/detail-${property.id}`)" label="Details" /></div>
                     </div>
                 </div>
             </li>
@@ -275,6 +270,13 @@ const getLink = (link:any) => {
 span.location.wises {
     font-size: 20px;
     font-weight: 200;
+}
+p.line-height-3.text-lg.text-900.mb-3.descriptionn {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 span.text-500.sale.text-lg.font-medium {
     background-color: #ecc36b;
