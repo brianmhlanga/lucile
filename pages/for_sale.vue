@@ -151,7 +151,7 @@
             <i class="pi pi-home text-xl mr-2"></i>Search By Suburb</span>
         </div>
         <div class="py-2 mt-3  surface-border">
-            <div v-for="suburb in suburbs" class="text-900 font-medium mb-2">{{suburb?.suburb_name}} ({{ suburb?.property ? suburb?.property.length : 0 }})</div>
+            <div v-for="suburb in suburbs" class="cursor-pointer text-900 font-medium mb-2" @click="navigateTo(`/search_by_suburb-${suburb.id}`)">{{suburb?.suburb_name}} ({{ suburb?.property ? suburb?.property.length : 0 }})</div>
         </div>
       </div>
     </div>
@@ -211,6 +211,7 @@ const getAllProperties = async() => {
       number_of_records.value = data?.data?.total
     })
 }
+
 onMounted(async() => {
     let data = {
       status: "FOR_SALE",
