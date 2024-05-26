@@ -108,6 +108,31 @@ export const useAdminStore = defineStore('admin', {
             });
             return result;
         },
+        async  getLocationTotals(){
+            var config = {
+                method: 'post',
+                url: '/admin/all_location_totals',
+                headers: { 
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
         async  getProperties(){
             var config = {
                 method: 'post',
@@ -163,6 +188,32 @@ export const useAdminStore = defineStore('admin', {
             var config = {
                 method: 'post',
                 url: '/admin/all_suburb_properties',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            const result: any = await axios(config).then(function (response) {
+                return {
+                    data: response.data,
+                    success: true
+                 }
+                 
+                 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return {
+                    success: false
+                 }
+            });
+            return result;
+        },
+        async  getLocationProperties(data:any){
+            var config = {
+                method: 'post',
+                url: '/admin/all_location_properties',
                 headers: { 
                     'Content-Type': 'application/json'
                 },
@@ -263,13 +314,14 @@ export const useAdminStore = defineStore('admin', {
             });
             return result;
         },
-        async  getLiveProperties(){
+        async  getLiveProperties(data:any){
             var config = {
                 method: 'post',
                 url: '/admin/all_live_properties',
                 headers: { 
                     'Content-Type': 'application/json'
-                }
+                },
+                data:data
             };
 
             const result: any = await axios(config).then(function (response) {
