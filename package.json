@@ -8,7 +8,7 @@
     "seed": "node prisma/seed.js",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "dependencies": {
     "@nuxt/image": "^1.5.0",
