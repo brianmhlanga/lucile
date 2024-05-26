@@ -13,7 +13,9 @@
     <div class="grid">
        <div class="col-12 lg:col-9">
         <div class="flex justify-content-between align-items-center mb-3">
-          <span class="text-900 font-medium text-xl pnames">{{ property?.name }}<br><span class="location wises"><i class="pi pi-map-marker"></i>{{ property?.address }}, {{ property?.suburb?.suburb_name }}</span></span>
+          <span class="text-900 font-medium text-xl pnames">{{ property?.name }}<br>
+            <span class="inline-flex align-items-center mb-3 loc"><span class="material-icons tex-600 mr-2">location_on</span><span class="text-600 locnames">{{ property?.address }}, {{ property?.suburb?.suburb_name }}</span></span></span>
+            
         </div>
        </div>
        <div class="col-12 lg:col-3">
@@ -32,7 +34,7 @@
     </template>
 </Galleria>
   </div>
-  <div class="col-12 lg:col-12 py-3 lg:pl-6">
+  <div class="col-12 lg:col-12 py-3 lg:pl-2">
     <div id="pv_id_70_0_content" class="p-tabview-panel" role="tabpanel" aria-labelledby="pv_id_70_0_header_action" data-pc-section="content" data-pc-name="tabpanel" data-pc-index="0" data-p-active="true">
   <div class="text-900 font-medium text-3xl mb-4 mt-2">Description & Details</div>
   <div class="line-height-3 text-700 p-0 mx-0 mt-0 mb-4" v-html="property?.description"></div>
@@ -161,7 +163,7 @@ const responsiveOptions = ref([
         numVisible: 1
     }
 ]);
-const shareOnFacebook = (id,name,listingstatus,location) => {
+const shareOnFacebook = (id:any,name:any,listingstatus:any,location:any) => {
     let text = `Hi, check out this property - ${name} ${listingstatus === 'FOR_SALE' ? "For Sale in" : "For Rent in"} ${location}, Click the link below to view it`;
     let link = `https://lucilerealestate/detail-${id}`;
     const facebookIntentURL = "https://www.facebook.com/sharer/sharer.php";
@@ -169,7 +171,7 @@ const shareOnFacebook = (id,name,listingstatus,location) => {
     const shareURL = facebookIntentURL + contentQuery;
     window.open(shareURL, "_blank");
 };
-const shareOnTwitter = (id,name,listingstatus,location) => {
+const shareOnTwitter = (id:any,name:any,listingstatus:any,location:any) => {
         let text = `Hi, check out this property - ${name} ${listingstatus === 'FOR_SALE' ? "For Sale in" : "For Rent in"} ${location}, Click the link below to view it`
         let link = `https://lucilerealestate/detail-${id}`
         const twitterIntentURL = "https://twitter.com/intent/tweet";
@@ -177,21 +179,21 @@ const shareOnTwitter = (id,name,listingstatus,location) => {
         const shareURL = twitterIntentURL + contentQuery;
         window.open(shareURL, "_blank");
 }
-const shareViaEmail = (id, name, listingStatus, location) => {
+const shareViaEmail = (id:any,name:any,listingstatus:any,location:any) => {
     let subject = `Check out this property - ${name}`;
-    let body = `Hi, \n\nCheck out this property - ${name} ${listingStatus === 'FOR_SALE' ? "For Sale in" : "For Rent in"} ${location}, Click the link below to view it:\n\n`;
+    let body = `Hi, \n\nCheck out this property - ${name} ${listingstatus === 'FOR_SALE' ? "For Sale in" : "For Rent in"} ${location}, Click the link below to view it:\n\n`;
     let link = `https://lucilerealestate/detail-${id}`;
     let email = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body + link);
     window.open(email, "_blank");
 }
 
-const shareOnWhatsapp = (id,name,listingstatus,location) => {
+const shareOnWhatsapp = (id:any,name:any,listingstatus:any,location:any) => {
         let text = `Hi, check out this property - ${name} ${listingstatus === 'FOR_SALE' ? "For Sale in" : "For Rent in"} ${location}, Click the link below to view it`
         let link = `https://lucilerealestate/detail-${id}`
         const url = "https://wa.me/?text=" + encodeURIComponent(text + "\n" + link);
         window.open(url, "_blank");
 }
-const createMessage = async (name,property,ref) => {
+const createMessage = async (name:any,property:any,ref:any) => {
    message.value = `Hi ${name}, can you call back about ${property}(${ref})`
 }
 
@@ -218,5 +220,9 @@ const getLink = (link:any) => {
 span.location.wises {
     font-size: 20px;
     font-weight: 200;
+}
+span.text-600.locnames {
+    font-size: 16px;
+    font-weight: 600;
 }
 </style>
