@@ -5,27 +5,25 @@
       <img src="/images/logo.svg" alt="Image">
     </div>
     <div class="col-12 md:col-3">
-      <div class="text-white text-lg mb-4 flex flex-wrap" style="max-width: 290px;">Jacob Obrechtstraat 5, 1071 KC Amsterdam The Netherlands</div>
+      <div class="text-white text-lg mb-4 flex flex-wrap" style="max-width: 290px;">Unit 5, 149 The Chase, Mt Pleasant, Harare, Zimbabwe</div>
       <div class="text-white mb-3">
-        <i class="pi pi-phone border-round p-1 mr-2"></i>(31) 20 779 8986
+        <i class="pi pi-phone border-round p-1 mr-2"></i>+263 867 718 9294
       </div>
       <div class="text-white mb-3">
-        <i class="pi pi-inbox border-round p-1 mr-2"></i>hello@alfred.co
+        <i class="pi pi-inbox border-round p-1 mr-2"></i>info@lucilerealestate.com
       </div>
     </div>
     <div class="col-12 md:col-3 text-gray-200">
       <div class="text-white font-bold line-height-3 mb-3">Company</div>
-      <a class="line-height-3 block cursor-pointer mb-2">About Us</a>
-      <a class="line-height-3 block cursor-pointer mb-2">News</a>
-      <a class="line-height-3 block cursor-pointer mb-2">Investor Relations</a>
-      <a class="line-height-3 block cursor-pointer mb-2">Careers</a>
-      <a class="line-height-3 block cursor-pointer">Media Kit</a>
+      <a href="/" class="line-height-3 block cursor-pointer mb-2">Home</a>
+      <a href="/for_rent" class="line-height-3 block cursor-pointer mb-2">For Rent</a>
+      <a href="/for_sale" class="line-height-3 block cursor-pointer mb-2">For Sale</a>
+      <a href="/about_us" class="line-height-3 block cursor-pointer mb-2">About Us</a>
     </div>
     <div class="col-12 md:col-3 text-gray-200">
-      <div class="text-white font-bold line-height-3 mb-3">Resourses</div>
-      <a class="line-height-3 block cursor-pointer mb-2">Get Started</a>
-      <a class="line-height-3 block cursor-pointer mb-2">Learn</a>
-      <a class="line-height-3 block cursor-pointer">Case Studies</a>
+      <div class="text-white font-bold line-height-3 mb-3">Quick Links</div>
+      <a href="/showdays" class="line-height-3 block cursor-pointer mb-2">Showdays</a>
+      <a href="/contact_us" class="line-height-3 block cursor-pointer mb-2">Contact Us</a>
     </div>
   </div>
 </div>
@@ -44,5 +42,9 @@
 .text-xl {
     color: white;
     font-size: 15px !important;
+}
+a.line-height-3.block.cursor-pointer.mb-2 {
+    color: #ebc562;
+    text-decoration: none;
 }
 </style>
