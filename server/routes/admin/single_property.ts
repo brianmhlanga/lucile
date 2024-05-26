@@ -8,7 +8,6 @@ const {id} = await readBody(event)
 
 try {
     
-    
     let properties = await prisma.property.findUnique({
         where: {
             id: id
