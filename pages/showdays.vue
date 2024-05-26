@@ -31,14 +31,8 @@
                         </div>
                         <div class="font-medium text-900 mb-3 line-height-3"><i class="pi pi-map-marker" style="font-size: 1rem;font-weight: 900;margin-right: 10px;"></i>{{ property?.address }}, {{ property?.suburb?.suburb_name }}, {{ property?.location?.location_name }}</div>
                         <span><i class="pi pi-clock" style="font-size: 1rem;font-weight: 900;margin-right: 10px;"></i>{{property?.showStartTime ? formatTime(property?.showStartTime) : "" }} - {{property?.showEndTime ? formatTime(property?.showEndTime) : "" }} </span>
-                        <div id="descriptionContainer">
-                            <!-- Your HTML content here -->
-                            <div class="line-height-3 text-lg text-900 mb-3" v-html="property?.description"></div>
-                        </div>
-                        <div class="text-700 text-3xl mb-5">{{ property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}/pm</div>
-                        <div class="detail_button">
-                            <Button class="w-4 ghf" @click="navigateTo(`/detail-${property.id}`)" label="Details" />
-                        </div>
+                        <p class="line-height-3 text-lg text-900 mb-3 descriptionn" v-html="property?.description"></p>
+                        <div class="flex justify-content-between border-top-1 surface-border mb-4 pt-4"><span class="text-xl text-900 font-bold text-3xl">{{ property?.amount ? formatCurrency(property?.amount) : formatCurrency(0) }}</span><Button class="w-4 ghf" @click="navigateTo(`/detail-${property.id}`)" label="Details" /></div>
                     </div>
                 </div>
             </li>
@@ -55,7 +49,7 @@
             <i class="pi pi-home text-xl mr-2"></i>Search By Suburb</span>
         </div>
         <div class="py-2 mt-3  surface-border">
-            <div v-for="suburb in suburbs" class="text-900 font-medium mb-2">{{suburb?.suburb_name}} ({{ suburb?.property ? suburb?.property.length : 0 }})</div>
+            <div @click="navigateTo(`/search_by_suburb-${suburb.id}`)" v-for="suburb in suburbs" class="cursor-pointer text-900 font-medium mb-2">{{suburb?.suburb_name}} ({{ suburb?.property ? suburb?.property.length : 0 }})</div>
         </div>
       </div>
     </div>
