@@ -10,10 +10,10 @@
         <div class="col-12 lg:col-4 p-3">
           <div class="p-3 shadow-2 border-round surface-card h-full">
             <div class="flex justify-content-between text-500">
-              <span class="city">Harare</span>
-              <span class="inline-flex">
+              <span @click="navigateTo(`/search_by_location-${harare.id}`)" class="city cursor-pointer">Harare</span>
+              <span @click="navigateTo(`/search_by_location-${harare.id}`)" class="inline-flex cursor-pointer">
                 <i class="pi pi-home mr-2"></i>
-                <span>12 Properties</span>
+                <span>{{ harare?.total ? harare?.total : 0 }} Properties</span>
               </span>
             </div>
             <img src="/images/harare.png" alt="Image" class="block w-full mt-5">
@@ -22,10 +22,10 @@
         <div class="col-12 lg:col-4 p-3">
           <div class="p-3 shadow-2 border-round surface-card h-full">
             <div class="flex justify-content-between text-500">
-              <span class="city">Bulawayo</span>
-              <span class="inline-flex">
+              <span @click="navigateTo(`/search_by_location-${bulawayo.id}`)" class="city cursor-pointer">Bulawayo</span>
+              <span @click="navigateTo(`/search_by_location-${bulawayo.id}`)" class="inline-flex cursor-pointer">
                 <i class="pi pi-home mr-2"></i>
-                <span>9 Properties</span>
+                <span>{{ bulawayo?.total ? bulawayo?.total : 0 }} Properties</span>
               </span>
             </div>
             <img src="/images/bulawayo.png" alt="Image" class="block w-full mt-5">
@@ -34,10 +34,10 @@
         <div class="col-12 lg:col-4 p-3">
           <div class="p-3 shadow-2 border-round surface-card h-full">
             <div class="flex justify-content-between text-500">
-              <span class="city">Gweru</span>
-              <span class="inline-flex">
+              <span @click="navigateTo(`/search_by_location-${gweru.id}`)" class="cursor-pointer city">Gweru</span>
+              <span @click="navigateTo(`/search_by_location-${gweru.id}`)" class="cursor-pointer inline-flex">
                 <i class="pi pi-home mr-2"></i>
-                <span>5 Properties</span>
+                <span>{{ gweru?.total ? gweru?.total : 0 }} Properties</span>
               </span>
             </div>
             <img src="/images/gweru.png" alt="Image" class="block w-full mt-5">
@@ -49,6 +49,24 @@
   <!---->
 </div>
   </template>
+  <script lang="ts" setup>
+const adminStore = useAdminStore()
+const locations = ref()
+const harare = ref()
+const bulawayo = ref()
+const gweru = ref()
+
+onMounted(async() => {
+  let subbs = await adminStore.getLocationTotals().then((data) => {
+     console.log("datatat",data?.data?.harare)
+     harare.value = data?.data?.harare,
+     bulawayo.value = data?.data?.bulawayo,
+     gweru.value = data?.data?.gweru
+     locations.value = data?.data?.properties
+
+    })
+})
+</script>
   <style>
   span.city {
       background-color: #ecc36b;
