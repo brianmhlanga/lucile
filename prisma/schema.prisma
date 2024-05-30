@@ -10,8 +10,8 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  // url = env("DATABASE_URL")
-  url      = "mysql://lucile:Bm19962019!@SG-gravel-comic-4708-8547-mysql-master.servers.mongodirector.com:3306/lucile?schema=public"
+  url = env("DATABASE_URL")
+  // url      = "mysql://lucile:Bm19962019!@SG-gravel-comic-4708-8547-mysql-master.servers.mongodirector.com:3306/lucile?schema=public"
 }
 
 model User {
